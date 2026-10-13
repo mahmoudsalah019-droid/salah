@@ -1,0 +1,12 @@
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+*.sln
+*.VC.db
+*.opensdf
+*.sdf
+*.suo
+# per-session Datasmith exports are rebuilt from SketchUp every session
+SMHQ_Data/export/

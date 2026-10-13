@@ -1,6 +1,6 @@
 # خطة المكتب الافتراضي التفاعلي — مقر صلاح محجوب للعمارة والتصميم
 
-**المحرك:** Unreal Engine 5.8 — **المصدر:** موديل SketchUp 2023 — **إعداد:** أكتوبر 2026 — **مراجعة 4:** 2026-10-13 (Check 12 الجديد اتعتمد، أسماء الإضاءة والمفاتيح، الباب أبو ضلفة واحدة من غير لاحقة، C++ + Blueprints اتعتمد، تثبيت Visual Studio 2022، الوكلاء على جهاز المكتب). **مراجعة 3:** (تسمية BIM بتاعة يوسف، الماكيتات MQ-xx، من غير DirectLink: إعادة بناء واستيراد كل جلسة، الزجاج بسُمك، فريق وكلاء ذكاء اصطناعي، الجهاز الجديد بعد حوالي شهرين، الإيراد تحت مليون دولار)
+**المحرك:** Unreal Engine 5.8 — **المصدر:** موديل SketchUp 2023 — **إعداد:** أكتوبر 2026 — **مراجعة 5:** 2026-10-13 (كود C++ وسكربتات Python اتكتبوا ورفعوا في `unreal/SMHQ_Virtual/` من غير تشغيل، فحص Visual Studio 2026 مع 5.8 وخطة الرجوع لـ 2022 على D). **مراجعة 4:** (Check 12 الجديد اتعتمد، أسماء الإضاءة والمفاتيح، الباب أبو ضلفة واحدة من غير لاحقة، C++ + Blueprints اتعتمد، تثبيت Visual Studio 2022، الوكلاء على جهاز المكتب). **مراجعة 3:** (تسمية BIM بتاعة يوسف، الماكيتات MQ-xx، من غير DirectLink: إعادة بناء واستيراد كل جلسة، الزجاج بسُمك، فريق وكلاء ذكاء اصطناعي، الجهاز الجديد بعد حوالي شهرين، الإيراد تحت مليون دولار)
 
 > **الحالة:** الخطة معتمدة للتجهيز بس. **التجربة في Unreal مش هتبدأ غير لما م. صلاح يقول "ابدأ"**. الفريق لسه بيصلّح الأبواب والإضاءة في الموديل.
 
@@ -13,7 +13,7 @@
 | البند | القرار |
 |---|---|
 | النقل من SketchUp | **Datasmith** (مش FBX)، **من غير DirectLink**: كل جلسة الموديل بيتبني بالسكربت ← تصدير `.udatasmith` ← سكربت Unreal يمسح القديم ويستورد ويربط كل حاجة **بالأسماء**. |
-| التفاعل | باب، نور، تمشية، تنقّل سريع، نقط معلومات، فيديو. الوكلاء بيكتبوا المنطق **C++** وبيطلّعوا منه **Blueprints** تتظبط من غير كود (**معتمد**، 7.0). |
+| التفاعل | باب، نور، تمشية، تنقّل سريع، نقط معلومات، فيديو. المنطق **C++** و**Blueprints** فوقه للتظبيط (**معتمد**، 7.0). **الكود متكتب ومرفوع في `unreal/SMHQ_Virtual/`، ولسه ماتجمّعش ولا اشتغل.** |
 | الإضاءة | **Lumen** للإضاءة المرتدة والانعكاسات، و**Nanite** للتفاصيل التقيلة، و**SunSky** على موقع جدة الحقيقي. |
 | الجهاز الحالي | Intel Arc 140T **مدمج** (بياخد لحد 16 جيجا من الرامات): نطاق التجربة بس، بجودة Low/Medium (**Lumen Lite**) ودقة مخفّضة. للبلوبرنت والتفاعل، مش للشكل النهائي. |
 | الجهاز الجديد RTX 5080 | جودة Epic، و**Hardware Ray Tracing**، و**MegaLights** للإضاءة الليلية الكتير، وهو كمان اللي هيعمل التغليف (Packaging) ويشغّل البث. |
@@ -89,6 +89,7 @@
 | الخامات | زي ما هي بالظبط | |
 | وحدة إضاءة | `LT_GF_E01_DOWN_03` (النوع، الدور، الفراغ، نوع الوحدة، الرقم) | فهد بيحطها في الموديل. السكربت بياخد الفراغ ونوع الوحدة من الاسم |
 | مفتاح نور | `SW_GF_E01_01` (النوع، الدور، الفراغ، الرقم) | فهد بيحطه في الموديل. السكربت بيربطه بنور نفس الفراغ لوحده |
+| شاشة عرض | **مقترح:** `SCR_GF_E05_01` (النوع، الدور، الفراغ، الرقم) | **محتاج موافقة** يوسف/فهد. الكود جاهز يقرا الصيغة دي، وبياناتها في `Screens.csv` |
 
 **الحاجات اللي مش في الاسم بتتكتب في جداول** (Excel يتحفظ CSV)، والسكربت بيقراها:
 
@@ -197,6 +198,8 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 - كل البلوبرنتس هنحطها في `/Game/SMHQ/Blueprints/`.
 
 > **مع فريق الوكلاء:** الخطوات الجاية مكتوبة علشان أي حد في المكتب يفهم كل عنصر بيعمل إيه ويقدر يظبطه أو يعدّله. التنفيذ الفعلي المقترح: الوكلاء يكتبوا نفس المنطق بالظبط كـ **C++** (لأن الوكلاء بيكتبوا كود نصي كويس، ومش بيعرفوا يرسموا مربعات البلوبرنت بالماوس)، وبعدين يعملوا **Blueprint** من كل كلاس فيه نفس المتغيّرات (OpenAngle، AutoOpen…) ظاهرة في الـ Details. يعني إنت بتتعامل مع Blueprints عادي، والمنطق اللي جوه متكتب كود. **اتعتمد 2026-10-13** (7.0).
+>
+> **الكود اتكتب فعلاً (مراجعة 5):** في `unreal/SMHQ_Virtual/Source/SMHQ_Virtual/`. فرق صغير عن الشرح اللي تحت: أزرار الكيبورد والماوس، وشاشات القايمة ولوحة المشروع، **متعملة بالكود** بدل ما حد يرسمها بالماوس. يعني مفيش "نص يوم لرصّ الشاشتين" اللي كان في التجربة، بس الشكل هيبقى بسيط في الأول، وممكن نجمّله بعدين.
 
 مراجع:
 - [Blueprints Quick Start Guide](https://dev.epicgames.com/documentation/en-us/unreal-engine/quick-start-guide-for-blueprints-visual-scripting-in-unreal-engine)
@@ -593,6 +596,46 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 ## 6. التجربة الأولى: البهو والاستقبال (على الجهاز الحالي — بتبدأ لما م. صلاح يقول "ابدأ" بس)
 
+### 6.0 أول خطوة يوم "ابدأ": هل Unreal 5.8 شغال مع Visual Studio 2026؟
+
+**الوضع:** عندك **Visual Studio Community 2026 (18.10)** فيه Game development with C++ وDesktop development with C++. والدرايف C فاضي فيه حوالي **24 جيجا بس**. Epic بتذكر في صفحتها إن نسخة MSVC 14.50 هي "الموصى بيها"، ودي النسخة اللي جاية مع 2026، وده مؤشر كويس. بس فيه بلاغ في منتدى Unreal إن 5.8.1 كان بيدوّر على 2022 حتى و2026 متثبّت. فلازم نجرّب بنفسنا. ([صفحة Epic](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine) · [بلاغ المنتدى](https://forums.unrealengine.com/t/5-8-1-project-fails-to-build-with-visual-studio-2026/2743331))
+
+**قبل الفحص (لتوفير مساحة C):**
+- كاش Unreal (DDC) يتنقل لـ D: متغيّر بيئة اسمه `UE-LocalDataCachePath` قيمته `D:\UE\DDC` (**يحتاج تحقق** من الاسم في 5.8).
+- مشروع `SMHQ_Virtual` نفسه يتحط على D.
+
+**الفحص (الوكلاء يعملوه، وياخد أقل من ساعة غير وقت أول تجميع):**
+
+| الخطوة | إيه اللي بيتعمل | ينجح لو | لو فشل |
+|---|---|---|---|
+| 1 | أمر البناء اللي في `unreal/SMHQ_Virtual/README.md` (Build.bat … SMHQ_VirtualEditor) | السطر الأخير `Result: Succeeded`، وفي أول السجل سطر `Using Visual Studio 2026 …` | شوف نوع الخطأ تحت |
+| 2 | فتح المشروع في Unreal | المحرر يفتح من غير رسالة "modules are missing or built with a different engine version" | نفس الكلام |
+| 3 | في الـ Content Browser ← C++ Classes | الكلاسات `SMHQDoor` و`SMHQCharacter`… ظاهرة | — |
+
+**لو فشل — نقرا الخطأ الأول، مش نجرّب عشوائي:**
+
+| نوع الخطأ (من سجل البناء) | معناه | نعمل إيه |
+|---|---|---|
+| أخطاء في ملفات `SMHQ*.cpp/.h` بتاعتنا (C2xxx) | الأدوات شغالة، والغلط في الكود اللي أنا كتبته | **مش مشكلة Visual Studio.** الوكلاء يبعتولي السجل كامل وأنا أصلّح. ماحدش يعدّل حوالين الغلط |
+| "Visual Studio 2022 must be installed" / "No valid Visual C++ toolchain" / UBT مش لاقي compiler | 5.8 مش بيتعرّف على 2026 | **المرحلة ب** |
+| أخطاء أو تحذيرات-معاملة-كأخطاء جوه ملفات المحرك نفسه (Engine\Source…) | MSVC بتاع 2026 أحدث من اللي 5.8 مستنيه | **المرحلة ب** |
+| "Windows SDK not found" | ناقص SDK | ضيف Windows 11 SDK 10.0.22621.0 من Visual Studio Installer وأعد الخطوة 1 |
+
+**المرحلة ب — من غير تثبيت 2022 (أرخص في المساحة):**
+1. Visual Studio Installer ← 2026 ← Modify ← Individual components ← علّم على **MSVC v143 – VS 2022 C++ x64/x86 build tools (v14.4x)** و**Windows 11 SDK (10.0.22621.0)** و**.NET Framework 4.8 targeting pack**. دي بتاخد كام جيجا على C (**يحتاج تحقق** من الحجم وقت التثبيت).
+2. الوكلاء يعملوا ملف `%APPDATA%\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml` يحدد نسخة الـ compiler (14.4x) — التفاصيل في الملحق A.1.
+3. أعد الخطوة 1. لو نجح ← نكمّل، ونسجّل في `PROJECT.md` إن 5.8 شغال بأدوات 2022 جوه 2026.
+
+**المرحلة ج — لو ب فشلت: Visual Studio 2022 على D:**
+1. الأخف: **Build Tools for Visual Studio 2022** (من غير برنامج التحرير نفسه، لأن الوكلاء بيبنوا بسطر الأوامر). لو مش كفاية: **Visual Studio Community 2022** كامل.
+2. في Visual Studio Installer: غيّر **Installation location** لـ `D:\VS2022`، و**Download cache** لـ `D:\VSCache` وعلّم "Remove download cache after installation". **خلي بالك:** جزء من الملفات المشتركة بيتحط على C غصب عنك أول مرة (كام جيجا — **يحتاج تحقق**).
+3. المكونات: نفس القايمة اللي في 7.0.1.
+4. ملف `BuildConfiguration.xml` يقول لـ Unreal يستخدم 2022 (الملحق A.1)، وأعد الخطوة 1.
+
+**المرحلة د — لو كله فشل:** نوقف ونبعت السجلات كاملة، وتقرر إنت (مثلاً نفضّي مساحة على C، أو نستنى الجهاز الجديد للتجميع).
+
+**اللي يتسجّل في كل الأحوال:** نسخة Visual Studio، ونسخة MSVC اللي اتبنى بيها، ونسخة Windows SDK، ومدة أول بناء، ومدة أول فتح للمحرر. ده بيتكتب في `PROJECT.md` تحت "سجل الجولات".
+
 ### 6.1 النطاق
 
 - **المكان:** المدخل + الاستقبال + جزء من الأتريوم اللي باين من الاستقبال.
@@ -632,7 +675,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 2. الأسماء في الـ Instances بنظام يوسف: الأبواب `DR_GF_E28_D43` أو `DR_GF_E28_D43_L/R`، والماكيتات `MQ-xx`، والإضاءة `LT_GF_E01_DOWN_03`، والمفاتيح `SW_GF_E01_01` (فهد).
 3. الزجاج قطع بسُمك.
 4. الجداول (`Doors`، `LightTypes`، `Spaces`، `Maquettes`، `Materials`، و`Lights` لو فيه استثناءات) لنطاق التجربة على الأقل.
-5. Visual Studio 2022 متثبّت بالإعدادات اللي في 7.0.1.
+5. Visual Studio 2026 زي ما هو متثبّت (هيتفحص يوم "ابدأ" في 6.0). مش محتاجين 2022 دلوقتي.
 6. ملف Datasmith لنطاق التجربة بس (`HQ_GF_Pilot.udatasmith`).
 
 **بعدها م. صلاح يراجع ويقول "ابدأ"، وساعتها بس نفتح Unreal.**
@@ -643,13 +686,13 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 | المرحلة | بالتوازي (وكلاء — كود وبيانات) | على الجهاز (بالترتيب) | Checks |
 |---|---|---|---|
-| تجهيز (نص يوم) | كلاسات C++ (الباب، النور، المفتاح، نهار/ليل، نقطة المعلومات، الشاشة، التنقّل)، `smhq_rebuild.py`، تحويل الجداول | تثبيت البلجن، إنشاء المشروع، أول تجميع للكود وللـ Shaders (ممكن ساعات) | — |
+| تجهيز (نص يوم) | **الكود والسكربتات جاهزين على Git من دلوقتي.** الوكلاء بيملوا الجداول لنطاق التجربة | فحص Visual Studio (6.0)، تثبيت بلجن Datasmith، أول تجميع للكود وللـ Shaders (ممكن ساعات)، `smhq_setup.py` | — |
 | يوم 1 | مراجعة تقرير الجودة وتصليح السكربت | `smhq_rebuild.py` على ملف التجربة، Collision، ارتفاع العين، SunSky، Exposure | 1، 2، 3، 8 |
-| يوم 2 | تصليح اللي ظهر | الأبواب، والنور والمفاتيح، ونهار وليل، ونقطة المعلومات، والقايمة. **تصميم شاشتين القايمة ونقطة المعلومات محتاج حد يرصّهم بالماوس** (نص يوم) | 4، 5، 6، 7، 9، 10 |
+| يوم 2 | تصليح اللي ظهر | الأبواب، والنور والمفاتيح، ونهار وليل، ونقطة المعلومات، والقايمة (الشاشات متعملة بالكود). استيراد خط عربي للواجهة | 4، 5، 6، 7، 9، 10 |
 | يوم 3 | تحضير تقرير التقييم | قياس الأداء، إعادة البناء من أول وجديد (Check 12)، تغليف `.exe` وتجربته على جهاز تاني | 11، 12، 13 |
 | يوم 4 | التقرير: جدول الـ 13 Check (ناجح / فاشل / يحتاج تحقق) + لقطات شاشة + فيديو قصير | مراجعة معاك | — |
 
-**إيه اللي محتاج إنسان:** موافقتك ومراجعتك بالعين، تثبيت البرامج من الـ Launcher (محتاج تسجيل دخول)، رصّ الشاشتين، تجربة النسخة على جهاز تاني، وتحميل أي أصول من Fab.
+**إيه اللي محتاج إنسان:** موافقتك ومراجعتك بالعين، تثبيت البرامج من الـ Launcher وVisual Studio Installer (محتاج تسجيل دخول)، تجربة النسخة على جهاز تاني، وتحميل أي أصول من Fab (زي الخط العربي).
 
 ## 7. الجدول الزمني والمخاطر
 
@@ -669,14 +712,16 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 3. كل شغل الوكلاء يتحفظ على Git، وكل تعديل ليه تقرير.
 4. **اتعتمد:** المنطق **C++**، و**Blueprints فوقه** للتظبيط من غير كود.
 
-### 7.0.1 تثبيت Visual Studio 2022 — تعلّم على إيه بالظبط
+### 7.0.1 Visual Studio 2022 — **احتياطي بس** (المرحلة ج في 6.0)
+
+> **تحديث (مراجعة 5):** عندك Visual Studio 2026 متثبّت، وهنجرّبه الأول (6.0). القسم ده بيتنفّذ **بس لو** المرحلتين أ وب فشلوا، وساعتها التثبيت يبقى على **D:** مش C.
 
 المرجع: [Setting Up Visual Studio for Unreal Engine](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine). صفحة Epic دي عامة لـ UE5 ومافيهاش صف مخصوص لـ 5.8، فالأرقام اللي جنبها "يحتاج تحقق" راجعها على الصفحة وإنت مختار نسخة 5.8.
 
 **قبل التثبيت:**
 - نزّل **Visual Studio 2022 Community** من موقع Microsoft. (Community مجاني للمكاتب الصغيرة؛ شروطه بتسمح بيه للشركات اللي مش "Enterprise"، يعني أقل من 250 جهاز وأقل من مليون دولار إيراد — **يحتاج تحقق** على شروط Microsoft.)
-- **ماتثبّتش Visual Studio 2026 دلوقتي.** فيه شكوى في منتدى Unreal إن مشاريع 5.8.1 بتدوّر على 2022 حتى لو 2026 متثبّت. خلّينا على 2022.
-- سيب حوالي **50–60 جيجا** فاضيين على الـ SSD للتثبيت (تقدير — **يحتاج تحقق**).
+- **ماتشيلش Visual Studio 2026.** الاتنين يقدروا يتثبّتوا جنب بعض.
+- غيّر مكان التثبيت لـ **D:** (Installation location) ومكان الـ Download cache لـ D كمان. المساحة المطلوبة حوالي **50–60 جيجا** للنسخة الكاملة، وأقل بكتير لـ Build Tools (تقدير — **يحتاج تحقق**).
 - اقفل Unreal وSketchUp وأي برامج تقيلة وإنت بتثبّت.
 
 **في Visual Studio Installer ← تبويب Workloads، علّم على:**
@@ -710,7 +755,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 1. Restart للجهاز.
 2. افتح Visual Studio مرة واحدة وسجّل دخول بحساب Microsoft (علشان Community يفضل شغال).
 3. في Epic Games Launcher ← Unreal Engine 5.8 ← السهم جنب Launch ← **Options**: **سيب "Editor symbols for debugging" مقفول** على الجهاز ده (حجمه كبير جداً ومش محتاجينه دلوقتي).
-4. **التأكد إن كله تمام (اختياري، ومش هو التجربة):** الوكلاء يقدروا يعملوا مشروع C++ فاضي في فولدر مؤقت ويبنوه بسطر الأوامر (الملحق A.1). لو اتبنى من غير أخطاء يبقى Visual Studio جاهز. ده مش هيلمس مشروع المكتب.
+4. ارجع للخطوة 1 في 6.0 (بناء `SMHQ_VirtualEditor`) بعد ما تحط `BuildConfiguration.xml` اللي بيختار 2022.
 
 ### 7.1 الجدول الزمني (فريق وكلاء + الجهاز الجديد بعد حوالي شهرين)
 
@@ -765,6 +810,10 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 | 18 | الوكلاء بيعدّلوا نفس ملف Unreal في نفس الوقت ويبوّظوه | متوسط | عالي | ملفات الـ Levels والـ Blueprints ليها وكيل واحد بس؛ التوازي في الملفات النصية؛ Git |
 | 19 | الوكلاء مايقدروش يحكموا على الشكل لوحدهم | عالي | متوسط | الوكلاء بيطلّعوا لقطات وتقارير؛ الحكم النهائي على الواقعية ليك |
 | 20 | الجهاز الحالي مايقدرش يستحمل الدور الأرضي كله حتى بجودة Low | متوسط | متوسط | نقسم الدور لأجزاء ونستورد الجزء اللي بنجرّبه بس |
+| 21 | 5.8 مش شغال مع Visual Studio 2026 | متوسط | متوسط | خطوات الرجوع في 6.0: أدوات v143 جوه 2026 ← Build Tools 2022 على D ← 2022 كامل |
+| 22 | مساحة C (حوالي 24 جيجا) تخلص أثناء التثبيت أو التجميع | عالي | عالي | الكاش والمشروع على D؛ أي تثبيت جديد على D؛ نراقب المساحة قبل كل خطوة |
+| 23 | الكود اتكتب من غير ما يتجمّع؛ أكيد هيطلع أخطاء تجميع أول مرة | عالي | منخفض | ده متوقع؛ الوكلاء يبعتوا السجل وأنا أصلّح؛ مفيش تعديل عشوائي |
+| 24 | الخط الافتراضي مايعرضش عربي صح في الواجهة | متوسط | متوسط | نستورد خط عربي (زي Noto Naskh Arabic) باسم `F_SMHQ_Arabic`، والكود بيستخدمه لوحده |
 
 ---
 
@@ -784,12 +833,16 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 - Check 12 بالصيغة الجديدة من غير DirectLink.
 - الإضاءة `LT_GF_E01_DOWN_03`، والمفاتيح `SW_GF_E01_01` (فهد بيحطهم في الموديل).
 - الباب أبو ضلفة واحدة `DR_GF_E28_D43`، و`_L` / `_R` للضلفتين بس.
-- C++ للأساس + Blueprints فوقه للتظبيط. م. صلاح هيثبّت Visual Studio 2022 (7.0.1).
+- C++ للأساس + Blueprints فوقه للتظبيط. (اتعدّل في مراجعة 5: نجرّب Visual Studio 2026 الأول، و2022 احتياطي.)
 - أنا بكتب الخطة والكود والسكربتات؛ الوكلاء على جهاز المكتب بيشغّلوا Unreal والسكربتات.
+
+**اتقرر كمان (2026-10-13، مراجعة 5):**
+- كود الـ C++ وسكربتات Python اتكتبوا ورفعوا على Git (`unreal/SMHQ_Virtual/`). **ماتجمّعوش وماشتغلوش.**
+- Visual Studio 2026 (18.10) يتجرّب الأول يوم "ابدأ" (6.0)؛ 2022 احتياطي على D بس.
 
 **لسه مستني:**
 1. **"ابدأ"** — بعد ما فهد ويوسف يخلّصوا الأسماء والمحاور في الموديل.
-2. هل أكتب كود الـ C++ (الباب، النور، المفتاح، نهار/ليل، نقطة المعلومات، الشاشة) **قبل** "ابدأ" كتجهيز ويستنى على Git من غير ما حد يشغّله؟ ولا كمان ده يستنى "ابدأ"؟
+2. **اسم شاشة العرض:** موافق على `SCR_GF_E05_01`؟
 3. فيديو الـ Showreel، وصور ونصوص المشاريع، وجدول الماكيتات MQ-xx ← المشاريع.
 
 ---
@@ -803,14 +856,16 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 | Item | Value |
 |---|---|
-| Template | Games → First Person, **C++** (recommended for agent-authored logic; Blueprint children for tuning), Starter Content off |
+| Project | **Already in the repo:** `unreal/SMHQ_Virtual/` (C++ module, own first-person character with runtime-created Enhanced Input, code-built UMG). No engine template needed. See its `README.md`. |
 | Project name | `SMHQ_Virtual` |
 | Required plugins | Datasmith Importer, Datasmith Content, Sun Position Calculator, Python Editor Script Plugin, Editor Scripting Utilities, Pixel Streaming 2 (delivery), Media Player (built in) |
 | Folder layout | `/Game/SMHQ/{GF,L01..L06,ROOF}/`, `/Game/SMHQ/Blueprints/`, `/Game/SMHQ/Materials/Masters/`, `/Game/SMHQ/UI/`, `/Game/SMHQ/Data/`, `/Content/Movies/` |
 | Maps | `L_HQ_Persistent` (hand-authored, never touched by rebuild: SunSky, PPV, player start, UI managers) + per-floor sublevels `L_GF_Import` (Datasmith output, wiped every rebuild) and `L_GF_Generated` (doors/lights/info points/teleports, wiped every rebuild) |
 | Rebuild entry point | `Content/Python/smhq_rebuild.py`, headless: `UnrealEditor-Cmd.exe SMHQ_Virtual.uproject -run=pythonscript -script="<abs path>/smhq_rebuild.py"` *(verify that level load/save works in commandlet mode in 5.8; otherwise run inside the editor via `-ExecutePythonScript=`)* |
 | C++ build (agents, command line) | `"<UE_5.8>\Engine\Build\BatchFiles\Build.bat" SMHQ_VirtualEditor Win64 Development -Project="<abs>\SMHQ_Virtual.uproject" -WaitMutex` *(verify target name after project creation)* |
-| Toolchain | Visual Studio 2022 (not 2026), workloads: Desktop C++, .NET desktop, Game development with C++; Windows 11 SDK 10.0.22621.0 + 10.0.26100.0; MSVC v143 latest (≥ 14.38, *verify for 5.8*) |
+| Toolchain | **Try first:** VS 2026 (18.10) as installed. **Fallback B:** v143 (14.4x) toolset + Windows 11 SDK 10.0.22621.0 added to VS 2026. **Fallback C:** VS 2022 Build Tools / Community on D: (workloads: Desktop C++, .NET desktop, Game development with C++; SDK 10.0.22621.0 + 10.0.26100.0). Section 6.0. |
+| `BuildConfiguration.xml` | `%APPDATA%\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml`. Fallback B: `<WindowsPlatform><CompilerVersion>14.4x.xxxxx</CompilerVersion></WindowsPlatform>` (exact folder name under `VC\Tools\MSVC`). Fallback C: `<WindowsPlatform><Compiler>VisualStudio2022</Compiler></WindowsPlatform>`. Root element `<Configuration xmlns="https://www.unrealengine.com/BuildConfiguration">`. *(verify element names for 5.8)* |
+| DDC on D: | env `UE-LocalDataCachePath=D:\UE\DDC` *(verify for 5.8)* — C: has ~24 GB free |
 | Agent constraints | One editor instance on the current laptop; binary assets (`.umap`, `.uasset`) single-owner; parallel work only on text sources (C++, Python, CSV) |
 | Source control | Git + Git LFS; commit `.uasset/.umap`, ignore `Saved/`, `Intermediate/`, `DerivedDataCache/`, `Binaries/`; never commit the imported `L_GF_Import` content if it is fully reproducible (optional) |
 
@@ -883,221 +938,24 @@ Rule: **nothing is hand-edited on imported or generated actors.** Every tweak li
 
 ## A.4 Rebuild pipeline: `smhq_rebuild.py`
 
-Run once per session after exporting a fresh `.udatasmith`. Requires Datasmith Importer, Python Editor Script Plugin, Editor Scripting Utilities. API names flagged *(verify)* must be confirmed against the 5.8 Python API on day 1 of the pilot.
+The script now lives in the repo (single source of truth): **`unreal/SMHQ_Virtual/Content/Python/smhq_rebuild.py`**, with the one-time **`smhq_setup.py`** next to it. Not executed yet.
 
-```python
-# Content/Python/smhq_rebuild.py — Unreal Engine 5.8, editor-only
-import csv, os, re
-import unreal
+| Step | What it does |
+|---|---|
+| 1 Wipe | Destroys every actor tagged `SMHQ_GEN` / `SMHQ_IMPORT`, deletes `/Game/SMHQ/Import/GF`. Hand-placed actors are untouched. |
+| 2 Import | `DatasmithSceneElement.construct_datasmith_scene_from_file` → `import_scene` (*verify name*); tags new actors `SMHQ_IMPORT`. |
+| 3 Materials / Nanite | `Materials.csv` substring mapping; Nanite on every non-glass mesh. |
+| 4 Doors | `DR_<Floor>_<E##>_<D##>[_L|_R]` → `BP_Door.configure_door(...)` from `Doors.csv`; pairs `_L`/`_R`; source leaf hidden **and its collision disabled**; box collision added to leaf meshes without simple collision. |
+| 5 Lights / rooms | `LT_<Floor>_<E##>_<KIND>_<NN>` → Spot/Point/Rect light under the fixture (lumens, kelvin, IES from `LightTypes.csv` + `Lights.csv`), tagged `<Floor>_<E##>`; one `BP_RoomLights` per space. |
+| 5b Switches | `SW_<Floor>_<E##>_<NN>` → `BP_LightSwitch` linked to the space's room manager. |
+| 6 Info points | `MQ-xx` → `BP_InfoPoint.configure_info(...)` from `Maquettes.csv` (project code, title, images, video). |
+| 7 Screens | `SCR_<Floor>_<E##>_<NN>` (*pending approval*) → `BP_CinemaScreen.configure_screen(...)` from `Screens.csv`, dims the same space. |
+| 8 Teleports | `Spaces.csv` rows with `Teleport=Yes` → `BP_TeleportPoint`. |
+| 9 QA | `Saved/SMHQ_QA.csv` + log line `SMHQ_QA_ERRORS=<n>`; then saves dirty packages. |
 
-PROJECT   = unreal.Paths.project_dir()
-DATA      = os.path.join(PROJECT, "SMHQ_Data")
-UDS_FILE  = os.path.join(DATA, "export", "HQ_GF.udatasmith")
-IMPORT_TO = "/Game/SMHQ/Import/GF"
-GEN_TAG   = unreal.Name("SMHQ_GEN")       # everything this script creates
-IMP_TAG   = unreal.Name("SMHQ_IMPORT")    # everything Datasmith imported
+## A.5 Logic reference (node-level)
 
-DOOR_RE  = re.compile(r"^DR_(?P<floor>[A-Z0-9]+)_(?P<space>E\d+)_(?P<door>D\d+)(?:_(?P<leaf>[LR]))?$")
-LIGHT_RE = re.compile(r"^LT_(?P<floor>[A-Z0-9]+)_(?P<space>E\d+)_(?P<kind>[A-Z]+)_(?P<num>\d+)$")
-SW_RE    = re.compile(r"^SW_(?P<floor>[A-Z0-9]+)_(?P<space>E\d+)_(?P<num>\d+)$")
-MQ_RE    = re.compile(r"(?P<mq>MQ-\d+)")
-
-BP = lambda name: unreal.EditorAssetLibrary.load_blueprint_class(f"/Game/SMHQ/Blueprints/{name}")
-DOOR_BP, ROOM_BP, INFO_BP, SWITCH_BP = BP("BP_Door"), BP("BP_RoomLights"), BP("BP_InfoPoint"), BP("BP_LightSwitch")
-LIGHT_CLASS = {"DOWN": unreal.SpotLight, "SPOT": unreal.SpotLight, "PEND": unreal.PointLight,
-               "WALL": unreal.PointLight, "LINE": unreal.RectLight, "COVE": unreal.RectLight}
-
-actors = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
-qa = []                                    # rows: (severity, kind, name, message)
-
-def rows(name, *key):
-    path = os.path.join(DATA, name)
-    if not os.path.exists(path):
-        qa.append(("WARN", "data", name, "missing CSV")); return {}
-    with open(path, newline="", encoding="utf-8-sig") as f:
-        return {tuple(r[k].strip() for k in key): r for r in csv.DictReader(f)}
-
-def yes(v): return str(v or "").strip().lower() in ("yes", "y", "true", "1")
-def label_of(a): return re.sub(r"_\d+$", "", a.get_actor_label())        # drop Datasmith dup suffix
-def mesh_comp(a): return a.get_component_by_class(unreal.StaticMeshComponent)
-def tag(a, *t): a.tags = list(a.tags) + [unreal.Name(x) if isinstance(x, str) else x for x in t]
-def spawn(cls, loc, rot=unreal.Rotator()):
-    a = actors.spawn_actor_from_class(cls, loc, rot); tag(a, GEN_TAG); return a
-
-# ---------------------------------------------------------------- 1. wipe
-old = [a for a in actors.get_all_level_actors() if GEN_TAG in a.tags or IMP_TAG in a.tags]
-actors.destroy_actors(old)
-if unreal.EditorAssetLibrary.does_directory_exist(IMPORT_TO):
-    unreal.EditorAssetLibrary.delete_directory(IMPORT_TO)
-
-# ---------------------------------------------------------------- 2. import
-before = set(a.get_path_name() for a in actors.get_all_level_actors())
-scene = unreal.DatasmithSceneElement.construct_datasmith_scene_from_file(UDS_FILE)
-scene.import_scene(IMPORT_TO)              # (verify) name in 5.8: import_scene / import_scenes
-imported = [a for a in actors.get_all_level_actors() if a.get_path_name() not in before]
-for a in imported:
-    tag(a, IMP_TAG)
-
-# ---------------------------------------------------------------- 3. materials + Nanite
-mat_map = {k[0].lower(): r["UnrealMaterial"] for k, r in rows("Materials.csv", "SketchUpMaterial").items()}
-seen_meshes = set()
-for a in imported:
-    c = mesh_comp(a)
-    if not c or not c.static_mesh:
-        continue
-    is_glass = False
-    for i in range(c.get_num_materials()):
-        m = c.get_material(i)
-        name = m.get_name().lower() if m else ""
-        is_glass |= "glass" in name
-        for su_name, ue_path in mat_map.items():
-            if su_name.replace(" ", "_") in name:          # Datasmith may sanitise names
-                c.set_material(i, unreal.EditorAssetLibrary.load_asset(ue_path))
-    sm = c.static_mesh
-    if sm.get_path_name() not in seen_meshes and not is_glass:
-        ns = sm.get_editor_property("nanite_settings")      # (verify) property name in 5.8
-        ns.enabled = True
-        sm.set_editor_property("nanite_settings", ns)
-        seen_meshes.add(sm.get_path_name())
-
-# ---------------------------------------------------------------- 4. doors
-door_rows = rows("Doors.csv", "Floor", "Door")
-leaves = {}                                                 # (floor, door) -> [BP_Door, ...]
-for a in imported:
-    m = DOOR_RE.match(label_of(a))
-    if not m:
-        if label_of(a).startswith("DR_"):
-            qa.append(("ERROR", "door", label_of(a), "name does not match DR_<Floor>_<E##>_<D##>[_L|_R]"))
-        continue
-    c = mesh_comp(a)
-    if not c:
-        continue
-    f, d, leaf = m["floor"], m["door"], m["leaf"]          # leaf None = single-leaf door
-    r = door_rows.get((f, d))
-    if r is None:
-        qa.append(("WARN", "door", label_of(a), "no row in Doors.csv — defaults used"))
-        r = {"Type": "Swing", "OpenAngle": "90", "OpenAngle_R": "", "AutoOpen": "No", "Locked": "No"}
-    angle = float(r["OpenAngle"] or 90)
-    if leaf == "R":
-        angle = float(r["OpenAngle_R"]) if r.get("OpenAngle_R") else -angle
-    door = spawn(DOOR_BP, a.get_actor_location(), a.get_actor_rotation())
-    door.set_actor_label(f"Door_{label_of(a)}")
-    door.set_actor_scale3d(a.get_actor_scale3d())
-    door.get_editor_property("DoorMesh").set_static_mesh(c.static_mesh)
-    door.set_editor_property("OpenAngle", angle)
-    door.set_editor_property("IsSliding", r["Type"].strip().lower() == "sliding")
-    door.set_editor_property("AutoOpen", yes(r["AutoOpen"]))
-    door.set_editor_property("IsLocked", yes(r["Locked"]))
-    tag(door, f"{f}_{m['space']}")
-    a.set_actor_hidden_in_game(True); a.set_is_temporarily_hidden_in_editor(True)
-    leaves.setdefault((f, d), []).append((leaf, door))
-for key, group in leaves.items():
-    kinds = sorted(leaf or "-" for leaf, _ in group)
-    code = "_".join(key)
-    if kinds == ["L", "R"]:
-        (_, a1), (_, a2) = group
-        a1.set_editor_property("PairedLeaf", a2); a2.set_editor_property("PairedLeaf", a1)
-    elif kinds != ["-"]:
-        qa.append(("ERROR", "door", code, f"inconsistent leaves {kinds}: expect single (no suffix) or exactly _L + _R"))
-
-# ---------------------------------------------------------------- 5. lights + room managers
-type_rows, light_rows, rooms = rows("LightTypes.csv", "Kind"), rows("Lights.csv", "Name"), {}
-for a in imported:
-    name = label_of(a)
-    m = LIGHT_RE.match(name)
-    if not m:
-        if name.startswith("LT_"):
-            qa.append(("ERROR", "light", name, "name does not match LT_<Floor>_<E##>_<KIND>_<NN>"))
-        continue
-    kind = m["kind"]
-    if kind not in LIGHT_CLASS:
-        qa.append(("ERROR", "light", name, f"unknown fixture kind {kind}")); continue
-    base, over = type_rows.get((kind,), {}), light_rows.get((name,), {})
-    if not base:
-        qa.append(("WARN", "light", name, f"kind {kind} missing in LightTypes.csv — engine defaults used"))
-    r = {k: (over.get(k) or base.get(k) or "") for k in ("Lumens", "Kelvin", "IES")}
-    cls = LIGHT_CLASS[kind]
-    origin, extent = a.get_actor_bounds(False)
-    loc = unreal.Vector(origin.x, origin.y, origin.z - extent.z - 2.0)
-    rot = unreal.Rotator(0.0, -90.0, 0.0) if cls is not unreal.PointLight else unreal.Rotator()  # (roll, pitch, yaw)
-    lt = spawn(cls, loc, rot)
-    lt.set_actor_label(f"L_{name}")
-    lc = lt.light_component
-    lc.set_editor_property("intensity_units", unreal.LightUnits.LUMENS)
-    lc.set_editor_property("intensity", float(r.get("Lumens") or 800))
-    lc.set_editor_property("use_temperature", True)
-    lc.set_editor_property("temperature", float(r.get("Kelvin") or 3000))
-    if r.get("IES"):
-        ies = unreal.EditorAssetLibrary.load_asset(r["IES"].strip())
-        if ies:
-            lc.set_editor_property("ies_texture", ies); lc.set_editor_property("use_ies_brightness", True)
-    room = f"{m['floor']}_{m['space']}"
-    tag(lt, room); rooms.setdefault(room, origin)
-managers = {}
-for room, origin in rooms.items():
-    mgr = spawn(ROOM_BP, origin)
-    mgr.set_actor_label(f"Room_{room}")
-    mgr.set_editor_property("RoomCode", unreal.Name(room))
-    managers[room] = mgr
-
-# ---------------------------------------------------------------- 5b. wall switches -> room manager
-for a in imported:
-    name = label_of(a)
-    m = SW_RE.match(name)
-    if not m:
-        if name.startswith("SW_"):
-            qa.append(("ERROR", "switch", name, "name does not match SW_<Floor>_<E##>_<NN>"))
-        continue
-    c = mesh_comp(a)
-    room = f"{m['floor']}_{m['space']}"
-    sw = spawn(SWITCH_BP, a.get_actor_location(), a.get_actor_rotation())
-    sw.set_actor_label(f"Switch_{name}")
-    sw.set_actor_scale3d(a.get_actor_scale3d())
-    if c:
-        sw.get_editor_property("SwitchMesh").set_static_mesh(c.static_mesh)
-        a.set_actor_hidden_in_game(True); a.set_is_temporarily_hidden_in_editor(True)
-    if room in managers:
-        sw.set_editor_property("TargetRoom", managers[room])
-    else:
-        qa.append(("WARN", "switch", name, f"no lights found in {room} — switch does nothing"))
-
-# ---------------------------------------------------------------- 6. maquette info points
-mq_rows = rows("Maquettes.csv", "Maquette")
-for a in imported:
-    m = MQ_RE.search(label_of(a))
-    if not m:
-        continue
-    origin, extent = a.get_actor_bounds(False)
-    ip = spawn(INFO_BP, unreal.Vector(origin.x, origin.y, origin.z + extent.z + 30.0))
-    ip.set_actor_label(f"Info_{m['mq']}")
-    ip.set_editor_property("MaquetteCode", unreal.Name(m["mq"]))   # BP reads DT_Maquettes row
-    if (m["mq"],) not in mq_rows:
-        qa.append(("WARN", "maquette", m["mq"], "no row in Maquettes.csv"))
-
-# ---------------------------------------------------------------- 7. teleport anchors
-for (f, sp), r in rows("Spaces.csv", "Floor", "Space").items():
-    if yes(r["Teleport"]):
-        loc = unreal.Vector(float(r["X"]) * 100, float(r["Y"]) * 100, float(r["Z"]) * 100)   # m -> cm
-        tp = spawn(unreal.TargetPoint, loc, unreal.Rotator(0.0, 0.0, float(r["Yaw"] or 0)))
-        tp.set_actor_label(f"TP_{f}_{sp}")
-        tag(tp, "Teleport", f"{f}_{sp}")
-
-# ---------------------------------------------------------------- 8. QA + save
-counts = {k: sum(1 for x in actors.get_all_level_actors() if x.get_actor_label().startswith(k))
-          for k in ("Door_", "L_", "Room_", "Switch_", "Info_", "TP_")}
-with open(os.path.join(PROJECT, "Saved", "SMHQ_QA.csv"), "w", newline="", encoding="utf-8") as f:
-    w = csv.writer(f); w.writerow(["severity", "kind", "name", "message"])
-    w.writerows(qa); w.writerow(["INFO", "counts", "", str(counts)])
-unreal.log(f"SMHQ rebuild done: {counts}; {len(qa)} QA issues -> Saved/SMHQ_QA.csv")
-unreal.EditorLoadingAndSavingUtils.save_dirty_packages(True, True)
-```
-
-Notes:
-- Doors, lights, info points and teleports are spawned in whatever level is current; set `L_GF_Generated` as current level before running (or load it via `EditorLevelLibrary`/`LevelEditorSubsystem`).
-- `ERROR` rows in the QA file fail Check 1; the pilot report lists them verbatim.
-- Spot-light orientation (`pitch -90`) and right-leaf sign (`-OpenAngle`) are verified visually in Checks 4 and 6, not assumed.
-
-## A.5 Blueprint reference (node-level)
+> Implemented in C++ under `unreal/SMHQ_Virtual/Source/SMHQ_Virtual/`; the graphs below describe the same behaviour for anyone tuning the Blueprint children. Input and UI are created in code (no `IA_*` / `WBP_*` assets).
 
 ### Interaction (BP_FirstPersonCharacter)
 ```
