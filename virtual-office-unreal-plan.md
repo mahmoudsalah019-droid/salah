@@ -1,6 +1,6 @@
 # خطة المكتب الافتراضي التفاعلي — مقر صلاح محجوب للعمارة والتصميم
 
-**المحرك:** Unreal Engine 5.8 — **المصدر:** موديل SketchUp 2023 — **إعداد:** أكتوبر 2026 — **مراجعة 3:** 2026-10-13 (تسمية BIM بتاعة يوسف، الماكيتات MQ-xx، من غير DirectLink: إعادة بناء واستيراد كل جلسة، الزجاج بسُمك، فريق وكلاء ذكاء اصطناعي، الجهاز الجديد بعد حوالي شهرين، الإيراد تحت مليون دولار)
+**المحرك:** Unreal Engine 5.8 — **المصدر:** موديل SketchUp 2023 — **إعداد:** أكتوبر 2026 — **مراجعة 4:** 2026-10-13 (Check 12 الجديد اتعتمد، أسماء الإضاءة والمفاتيح، الباب أبو ضلفة واحدة من غير لاحقة، C++ + Blueprints اتعتمد، تثبيت Visual Studio 2022، الوكلاء على جهاز المكتب). **مراجعة 3:** (تسمية BIM بتاعة يوسف، الماكيتات MQ-xx، من غير DirectLink: إعادة بناء واستيراد كل جلسة، الزجاج بسُمك، فريق وكلاء ذكاء اصطناعي، الجهاز الجديد بعد حوالي شهرين، الإيراد تحت مليون دولار)
 
 > **الحالة:** الخطة معتمدة للتجهيز بس. **التجربة في Unreal مش هتبدأ غير لما م. صلاح يقول "ابدأ"**. الفريق لسه بيصلّح الأبواب والإضاءة في الموديل.
 
@@ -13,7 +13,7 @@
 | البند | القرار |
 |---|---|
 | النقل من SketchUp | **Datasmith** (مش FBX)، **من غير DirectLink**: كل جلسة الموديل بيتبني بالسكربت ← تصدير `.udatasmith` ← سكربت Unreal يمسح القديم ويستورد ويربط كل حاجة **بالأسماء**. |
-| التفاعل | باب، نور، تمشية، تنقّل سريع، نقط معلومات، فيديو. الوكلاء بيكتبوا المنطق **C++** وبيطلّعوا منه **Blueprints** تتظبط من غير كود (مقترح — محتاج موافقتك، 7.0). |
+| التفاعل | باب، نور، تمشية، تنقّل سريع، نقط معلومات، فيديو. الوكلاء بيكتبوا المنطق **C++** وبيطلّعوا منه **Blueprints** تتظبط من غير كود (**معتمد**، 7.0). |
 | الإضاءة | **Lumen** للإضاءة المرتدة والانعكاسات، و**Nanite** للتفاصيل التقيلة، و**SunSky** على موقع جدة الحقيقي. |
 | الجهاز الحالي | Intel Arc 140T **مدمج** (بياخد لحد 16 جيجا من الرامات): نطاق التجربة بس، بجودة Low/Medium (**Lumen Lite**) ودقة مخفّضة. للبلوبرنت والتفاعل، مش للشكل النهائي. |
 | الجهاز الجديد RTX 5080 | جودة Epic، و**Hardware Ray Tracing**، و**MegaLights** للإضاءة الليلية الكتير، وهو كمان اللي هيعمل التغليف (Packaging) ويشغّل البث. |
@@ -77,9 +77,9 @@
 | `GF` | الدور | أرضي |
 | `E28` | الفراغ | E-28 |
 | `D43` | رقم الباب | D-43 |
-| `L` / `R` | الضلفة: شمال / يمين (لو الباب ضلفة واحدة، هل في لاحقة؟ — **محتاج تأكيد**) | الشمال |
+| `L` / `R` | الضلفة: شمال / يمين — **للباب أبو ضلفتين بس**. الباب أبو ضلفة واحدة من غير لاحقة: `DR_GF_E28_D43` | الشمال |
 
-ميزة الصيغة دي: الفراغ والدور جوه الاسم نفسه، فالسكربت بيعرف لوحده الباب في أنهي أوضة، ويربط الضلفتين `L` و`R` بتوع نفس الباب علشان يفتحوا مع بعض.
+ميزة الصيغة دي: الفراغ والدور جوه الاسم نفسه، فالسكربت بيعرف لوحده الباب في أنهي أوضة، ويربط الضلفتين `L` و`R` بتوع نفس الباب علشان يفتحوا مع بعض. ونفس الكلام للإضاءة والمفاتيح: كل لمبة وكل مفتاح في `E01` بيتربطوا ببعض أوتوماتيك.
 
 | العنصر | الاسم | ملاحظة |
 |---|---|---|
@@ -87,20 +87,23 @@
 | فراغ | `E28` جوه الأسماء (وE-28 في الجداول والعرض) | |
 | ماكيت | `MQ-xx` | **رقم المشروع (D-07…) في الجدول بس**، مش في اسم الماكيت |
 | الخامات | زي ما هي بالظبط | |
-| وحدة إضاءة | **محتاج صيغة يوسف للإضاءة** — نفترض مؤقتاً إنها نفس المنطق: `LT_GF_E28_<رقم>` | السكربت بياخد الفراغ من الاسم |
+| وحدة إضاءة | `LT_GF_E01_DOWN_03` (النوع، الدور، الفراغ، نوع الوحدة، الرقم) | فهد بيحطها في الموديل. السكربت بياخد الفراغ ونوع الوحدة من الاسم |
+| مفتاح نور | `SW_GF_E01_01` (النوع، الدور، الفراغ، الرقم) | فهد بيحطه في الموديل. السكربت بيربطه بنور نفس الفراغ لوحده |
 
 **الحاجات اللي مش في الاسم بتتكتب في جداول** (Excel يتحفظ CSV)، والسكربت بيقراها:
 
 | الجدول | الأعمدة | مثال |
 |---|---|---|
 | `Doors.csv` | Floor, Door, Type (Swing / Sliding), OpenAngle, OpenAngle_R, AutoOpen, Locked | `GF, D43, Swing, 90, -90, No, No` |
-| `Lights.csv` | Name, Kind (DOWN / SPOT / PEND / WALL / LINE / COVE), Lumens, Kelvin, IES | `<اسم الوحدة>, DOWN, 900, 3000, <ملف IES>` |
+| `LightTypes.csv` | Kind (DOWN / SPOT / PEND / WALL / LINE / COVE), Lumens, Kelvin, IES | `DOWN, 900, 3000, <ملف IES>` — القيم الافتراضية لكل نوع وحدة |
+| `Lights.csv` (اختياري) | Name, Lumens, Kelvin, IES | `LT_GF_E01_DOWN_03, 1200, 2700, …` — بس للوحدة اللي محتاجة قيمة مختلفة عن نوعها |
 | `Spaces.csv` | Floor, Space, NameAR, NameEN, Teleport (Yes/No), X, Y, Z, Yaw | `GF, E28, الاستقبال, Reception, Yes, 25.0, 6.0, 0.0, 90` |
 | `Maquettes.csv` | Maquette, Project, Title, Description, Images, Video | `MQ-03, D-07, فيلا خاصة — أبحر, …` |
 | `Materials.csv` | SketchUpMaterial, UnrealMaterial | `Marble_Calacatta, /Game/SMHQ/Materials/MI_Marble_Calacatta` |
 
 - لو باب موجود في الموديل ومالوش سطر في `Doors.csv`، السكربت بيديله الافتراضي (لف 90°، بالزرار، مش مقفول) وبيكتبه في التقرير.
-- `OpenAngle_R` للضلفة اليمين لو محتاجة اتجاه مختلف؛ لو فاضي بياخد عكس `OpenAngle`. ده بيتأكد بالعين في Check 4.
+- `OpenAngle_R` للضلفة اليمين لو محتاجة اتجاه مختلف؛ لو فاضي بياخد عكس `OpenAngle`. ده بيتأكد بالعين في Check 4. الباب أبو ضلفة واحدة بياخد `OpenAngle` بس.
+- لو نفس رقم الباب اتلاقى من غير لاحقة **ومع** `_L`/`_R`، أو ضلفة `_L` من غير `_R`، السكربت بيكتبه في التقرير كغلطة ومايخمّنش.
 - **التعارض اللي كان بين أكواد الأبواب وأكواد المشاريع اتحل:** الأبواب `DR_…_D43_…` والماكيتات `MQ-xx`، ورقم المشروع في `Maquettes.csv` بس.
 - إحداثيات نقط التنقّل في `Spaces.csv` بالمتر من نفس أصل الموديل. سكربت SketchUp يقدر يطلّعها، أو تتكتب يدوي.
 
@@ -193,7 +196,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 - لو علّمت على المتغيّر **Instance Editable** (العين المفتوحة)، تقدر تغيّر قيمته لكل نسخة من الـ Level من غير ما تفتح البلوبرنت. ده اللي هيخلّي حد مش مبرمج يحط 200 باب ويظبطهم من الـ Details بس.
 - كل البلوبرنتس هنحطها في `/Game/SMHQ/Blueprints/`.
 
-> **مع فريق الوكلاء:** الخطوات الجاية مكتوبة علشان أي حد في المكتب يفهم كل عنصر بيعمل إيه ويقدر يظبطه أو يعدّله. التنفيذ الفعلي المقترح: الوكلاء يكتبوا نفس المنطق بالظبط كـ **C++** (لأن الوكلاء بيكتبوا كود نصي كويس، ومش بيعرفوا يرسموا مربعات البلوبرنت بالماوس)، وبعدين يعملوا **Blueprint** من كل كلاس فيه نفس المتغيّرات (OpenAngle، AutoOpen…) ظاهرة في الـ Details. يعني إنت بتتعامل مع Blueprints عادي، والمنطق اللي جوه متكتب كود. **محتاج موافقتك** (7.0).
+> **مع فريق الوكلاء:** الخطوات الجاية مكتوبة علشان أي حد في المكتب يفهم كل عنصر بيعمل إيه ويقدر يظبطه أو يعدّله. التنفيذ الفعلي المقترح: الوكلاء يكتبوا نفس المنطق بالظبط كـ **C++** (لأن الوكلاء بيكتبوا كود نصي كويس، ومش بيعرفوا يرسموا مربعات البلوبرنت بالماوس)، وبعدين يعملوا **Blueprint** من كل كلاس فيه نفس المتغيّرات (OpenAngle، AutoOpen…) ظاهرة في الـ Details. يعني إنت بتتعامل مع Blueprints عادي، والمنطق اللي جوه متكتب كود. **اتعتمد 2026-10-13** (7.0).
 
 مراجع:
 - [Blueprints Quick Start Guide](https://dev.epicgames.com/documentation/en-us/unreal-engine/quick-start-guide-for-blueprints-visual-scripting-in-unreal-engine)
@@ -289,7 +292,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 5. **Event BeginPlay** ← SetLights(`StartOn`).
 6. **ملء القائمة أوتوماتيك:** بدل ما تختار اللمبات واحدة واحدة، في **Construction Script**: **Get All Actors with Tag** (التاج = `RoomCode`) ← حطهم في `Lights`. والسكربت (ملحق A.4) بيدي كل لمبة تاج فراغها من اسمها نفسه (مثلاً `GF_E28`)، وكمان بيحط `BP_RoomLights` واحد لكل فراغ فيه لمبات.
 
-**ب. `BP_LightSwitch`:**
+**ب. `BP_LightSwitch`** (السكربت بيحط واحد مكان كل مفتاح `SW_GF_E01_01` في الموديل، وبيربطه بمدير نور نفس الفراغ لوحده):
 1. **Actor** فيه Static Mesh لمفتاح على الحيطة + Interface `BPI_Interact`.
 2. متغيّر Instance Editable: `TargetRoom` (Object Reference من نوع BP_RoomLights). من الـ Details تختار المدير بالـ eyedropper.
 3. **Event Interact** ← `TargetRoom` ← **Toggle** ← صوت "تك".
@@ -603,7 +606,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 ### 6.2 Checks معتمدة للتجربة الأولى (اتقفلت 2026-10-13)
 
-م. صلاح وافق على الـ 13 Check دول. **مقفولين:** مفيش تعديل ولا تسهيل أثناء الشغل غير بموافقة صريحة جديدة. (نسخة منهم محفوظة في `PROJECT.md`.)
+م. صلاح وافق على الـ 13 Check دول (وعلى صيغة Check 12 الجديدة من غير DirectLink في نفس اليوم). **مقفولين:** مفيش تعديل ولا تسهيل أثناء الشغل غير بموافقة صريحة جديدة. (نسخة منهم محفوظة في `PROJECT.md`.)
 
 | # | المعيار (نعم/لا) |
 |---|---|
@@ -618,24 +621,19 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 | 9 | نقطة المعلومات بتظهر "اضغط E" لما تقرب، وبتفتح العنوان والصورتين، وبتتقفل لما تبعد أو بـ Esc. |
 | 10 | التنقّل السريع بينقل للمكانين وبيبص في الاتجاه الصح. |
 | 11 | على الجهاز الحالي: 30 fps أو أكتر على 1080p بجودة Medium جوه نطاق التجربة. |
-| 12 | تحديث بسيط في SketchUp (تغيير خامة الأرضية) بيوصل Unreal بـ DirectLink **من غير ما الباب أو النور يبوظوا**. |
+| 12 | تعديل بسيط في SketchUp (تغيير خامة الأرضية) ← إعادة بناء الموديل بالسكربت ← تصدير Datasmith جديد ← تشغيل `smhq_rebuild.py`: التعديل بيظهر، والأبواب والنور ونقطة المعلومات شغالين زي قبلها بالظبط، ومفيش ولا عنصر مكرر أو ناقص (حسب تقرير الجودة). *(الصيغة دي اتعتمدت 2026-10-13 مكان صيغة DirectLink.)* |
 | 13 | نسخة ويندوز متغلّفة (.exe) من التجربة بتشتغل على جهاز تاني. |
-
-> **⚠ Check 12 محتاج قرار منك:** الصيغة المعتمدة بتقول "بيوصل Unreal بـ **DirectLink**"، وإنت قررت مانستخدمش DirectLink. يعني Check 12 بصيغته الحالية مش هينفع يتقاس، وهيتكتب "يحتاج تحقق". **مش هغيّره من نفسي.** الصيغة البديلة المقترحة (مش أسهل، بالعكس أشد):
->
-> **12 (مقترح):** "تعديل بسيط في SketchUp (تغيير خامة الأرضية) ← إعادة بناء الموديل بالسكربت ← تصدير Datasmith جديد ← تشغيل `smhq_rebuild.py`: التعديل بيظهر، والأبواب والنور ونقطة المعلومات شغالين زي قبلها بالظبط، ومفيش ولا عنصر مكرر أو ناقص (حسب تقرير الجودة)."
->
-> لو وافقت صراحةً، هتتسجل في `PROJECT.md` بتاريخها مكان القديمة.
 
 **الحاجات اللي الـ Checks دي مابتقيسهاش** (هنعلّق عليها في التقرير): الإحساس العام بالواقعية، توازن ألوان الخامات، راحة سرعة المشي. دي تقييمك إنت بالعين.
 
 ### 6.3 قبل التجربة: تعديلات الموديل (عند فريقك — شغال دلوقتي)
 
 1. الأبواب ووحدات الإضاءة Components، ومحاور الأبواب على المفصّلة.
-2. الأسماء في الـ Instances بنظام يوسف: `DR_GF_E28_D43_L`، والماكيتات `MQ-xx`، وصيغة الإضاءة.
+2. الأسماء في الـ Instances بنظام يوسف: الأبواب `DR_GF_E28_D43` أو `DR_GF_E28_D43_L/R`، والماكيتات `MQ-xx`، والإضاءة `LT_GF_E01_DOWN_03`، والمفاتيح `SW_GF_E01_01` (فهد).
 3. الزجاج قطع بسُمك.
-4. الجداول (`Doors`، `Lights`، `Spaces`، `Maquettes`، `Materials`) لنطاق التجربة على الأقل.
-5. ملف Datasmith لنطاق التجربة بس (`HQ_GF_Pilot.udatasmith`).
+4. الجداول (`Doors`، `LightTypes`، `Spaces`، `Maquettes`، `Materials`، و`Lights` لو فيه استثناءات) لنطاق التجربة على الأقل.
+5. Visual Studio 2022 متثبّت بالإعدادات اللي في 7.0.1.
+6. ملف Datasmith لنطاق التجربة بس (`HQ_GF_Pilot.udatasmith`).
 
 **بعدها م. صلاح يراجع ويقول "ابدأ"، وساعتها بس نفتح Unreal.**
 
@@ -666,10 +664,53 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 | | وصول الجهاز الجديد |
 
 **قواعد شغل الوكلاء:**
-1. **الوكلاء لازم يشتغلوا على جهاز الويندوز اللي عليه Unreal** (مثلاً Claude Code مثبّت عليه)، علشان يشغّلوا Unreal بسطر أوامر ويقروا التقارير. الجلسة دي (اللي أنا فيها) شغالة في السحابة على Linux ومش هتقدر تشغّل Unreal على جهازك.
+1. **توزيع الشغل (اتفقنا عليه 2026-10-13):** أنا (الجلسة دي في السحابة) بكتب الخطة والكود والسكربتات وبرفعها على Git. **الوكلاء على جهاز المكتب** بيسحبوها ويشغّلوا Unreal والسكربتات ويرجّعوا التقارير واللقطات. أنا مش بشغّل Unreal ومش بشوف جهازك.
 2. **ملفات Unreal اللي مش نصية** (الـ Levels والـ Blueprints) مايشتغلش عليها أكتر من وكيل في نفس الوقت. التوازي يبقى في الكود والسكربتات والجداول (ملفات نصية).
 3. كل شغل الوكلاء يتحفظ على Git، وكل تعديل ليه تقرير.
-4. **القرار المطلوب منك:** المنطق يتكتب **C++ + Blueprints للتظبيط** (المقترح، مناسب للوكلاء)، ولا **Blueprints بس** متبنية بإيد حسب القسم 2 (أبطأ، ومحتاجة حد في المكتب يرسمها). C++ محتاج **Visual Studio 2022** على الجهاز (**يحتاج تحقق** من النسخة المطلوبة لـ 5.8).
+4. **اتعتمد:** المنطق **C++**، و**Blueprints فوقه** للتظبيط من غير كود.
+
+### 7.0.1 تثبيت Visual Studio 2022 — تعلّم على إيه بالظبط
+
+المرجع: [Setting Up Visual Studio for Unreal Engine](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine). صفحة Epic دي عامة لـ UE5 ومافيهاش صف مخصوص لـ 5.8، فالأرقام اللي جنبها "يحتاج تحقق" راجعها على الصفحة وإنت مختار نسخة 5.8.
+
+**قبل التثبيت:**
+- نزّل **Visual Studio 2022 Community** من موقع Microsoft. (Community مجاني للمكاتب الصغيرة؛ شروطه بتسمح بيه للشركات اللي مش "Enterprise"، يعني أقل من 250 جهاز وأقل من مليون دولار إيراد — **يحتاج تحقق** على شروط Microsoft.)
+- **ماتثبّتش Visual Studio 2026 دلوقتي.** فيه شكوى في منتدى Unreal إن مشاريع 5.8.1 بتدوّر على 2022 حتى لو 2026 متثبّت. خلّينا على 2022.
+- سيب حوالي **50–60 جيجا** فاضيين على الـ SSD للتثبيت (تقدير — **يحتاج تحقق**).
+- اقفل Unreal وSketchUp وأي برامج تقيلة وإنت بتثبّت.
+
+**في Visual Studio Installer ← تبويب Workloads، علّم على:**
+
+| القسم | تعلّم على | ملاحظة |
+|---|---|---|
+| Desktop & Mobile | ✔ **Desktop development with C++** | أساسي |
+| Desktop & Mobile | ✔ **.NET desktop development** | Epic بتطلبه (أدوات البناء بتاعة Unreal محتاجاه) |
+| Gaming | ✔ **Game development with C++** | أساسي |
+
+> صفحة Epic بتذكر كمان **.NET Multi-platform App UI development**. ده مهم لو هنبني للموبايل، وإحنا مش هنبني للموبايل، فتقدر تسيبه علشان توفر مساحة. لو حصل أي خطأ في البناء بعدين، نضيفه.
+
+**على اليمين (Installation details) تحت Game development with C++، اتأكد إن دول متعلّم عليهم:**
+
+| تعلّم على | ملاحظة |
+|---|---|
+| ✔ **C++ profiling tools** | |
+| ✔ **Windows 11 SDK (10.0.22621.0)** | **و** ✔ **Windows 11 SDK (10.0.26100.0)** لو ظاهر. فيه تضارب في 5.8 بين النسختين (منتدى Unreal)، فتثبيت الاتنين بيقفل المشكلة |
+| ✔ **Unreal Engine installer** | |
+| ✔ **IDE support for Unreal Engine** | لو ظاهر؛ بيسهّل قراية كود Unreal |
+| ✖ C++ AddressSanitizer | اختياري؛ مش محتاجينه، وسيبه علشان المساحة |
+
+**في تبويب Individual components، دوّر وعلّم على:**
+
+| تعلّم على | ملاحظة |
+|---|---|
+| ✔ **MSVC v143 – VS 2022 C++ x64/x86 build tools (Latest)** | غالباً متعلّم لوحده. Epic بتقول أقل نسخة 14.38 (**يحتاج تحقق** لـ 5.8) |
+| ✔ **.NET Framework 4.8 SDK** / **4.8 targeting pack** | لو مش متعلّم لوحده (**يحتاج تحقق**) |
+
+**بعد التثبيت:**
+1. Restart للجهاز.
+2. افتح Visual Studio مرة واحدة وسجّل دخول بحساب Microsoft (علشان Community يفضل شغال).
+3. في Epic Games Launcher ← Unreal Engine 5.8 ← السهم جنب Launch ← **Options**: **سيب "Editor symbols for debugging" مقفول** على الجهاز ده (حجمه كبير جداً ومش محتاجينه دلوقتي).
+4. **التأكد إن كله تمام (اختياري، ومش هو التجربة):** الوكلاء يقدروا يعملوا مشروع C++ فاضي في فولدر مؤقت ويبنوه بسطر الأوامر (الملحق A.1). لو اتبنى من غير أخطاء يبقى Visual Studio جاهز. ده مش هيلمس مشروع المكتب.
 
 ### 7.1 الجدول الزمني (فريق وكلاء + الجهاز الجديد بعد حوالي شهرين)
 
@@ -731,7 +772,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 **اتقرر (2026-10-13):**
 - التسمية بنظام يوسف (BIM): `DR_GF_E28_D43_L`، والماكيتات `MQ-xx`، ورقم المشروع في الجدول بس، والخامات زي ما هي.
-- الـ 13 Check بتوع التجربة: معتمدين ومقفولين (Check 12 مستني قرارك، شوف 6.2).
+- الـ 13 Check بتوع التجربة: معتمدين ومقفولين.
 - من غير DirectLink: الموديل بيتبني بالسكربت كل جلسة، وبيتصدّر Datasmith، وبيتربط بالأسماء.
 - الزجاج قطع بسُمك.
 - الجهاز الحالي: Core Ultra 7 255H + Arc 140T مدمج. الجديد RTX 5080 بعد حوالي شهرين.
@@ -739,13 +780,24 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 - الفريق: وكلاء ذكاء اصطناعي شغالين بالتوازي.
 - **التجربة في Unreal مابتبدأش غير لما م. صلاح يقول "ابدأ".**
 
-**لسه محتاج منك:**
-1. **Check 12:** توافق على الصيغة البديلة (من غير DirectLink)، ولا تسيبه زي ما هو؟
-2. **صيغة يوسف لأسماء الإضاءة** (ومفاتيح الحيطة لو موجودة في الموديل).
-3. **الباب بضلفة واحدة:** اسمه بيخلص بـ `_L` برضه، ولا من غير لاحقة؟
-4. **C++ + Blueprints** (المقترح للوكلاء) ولا **Blueprints بس**؟
-5. الوكلاء هيشتغلوا على جهاز الويندوز نفسه؟ (لازم علشان يشغّلوا Unreal.)
-6. فيديو الـ Showreel، وصور ونصوص المشاريع، وجدول الماكيتات MQ-xx ← المشاريع.
+**اتقرر كمان (2026-10-13، مراجعة 4):**
+- Check 12 بالصيغة الجديدة من غير DirectLink.
+- الإضاءة `LT_GF_E01_DOWN_03`، والمفاتيح `SW_GF_E01_01` (فهد بيحطهم في الموديل).
+- الباب أبو ضلفة واحدة `DR_GF_E28_D43`، و`_L` / `_R` للضلفتين بس.
+- C++ للأساس + Blueprints فوقه للتظبيط. م. صلاح هيثبّت Visual Studio 2022 (7.0.1).
+- أنا بكتب الخطة والكود والسكربتات؛ الوكلاء على جهاز المكتب بيشغّلوا Unreal والسكربتات.
+
+**لسه مستني:**
+1. **"ابدأ"** — بعد ما فهد ويوسف يخلّصوا الأسماء والمحاور في الموديل.
+2. هل أكتب كود الـ C++ (الباب، النور، المفتاح، نهار/ليل، نقطة المعلومات، الشاشة) **قبل** "ابدأ" كتجهيز ويستنى على Git من غير ما حد يشغّله؟ ولا كمان ده يستنى "ابدأ"؟
+3. فيديو الـ Showreel، وصور ونصوص المشاريع، وجدول الماكيتات MQ-xx ← المشاريع.
+
+---
+---
+
+# Appendix — Technical Reference (English)
+
+> All paths and settings target **Unreal Engine 5.8**, C++ base classes with Blueprint children. Verify any value marked *(verify)* against the official docs for 5.8 before production.
 
 ## A.1 Project setup
 
@@ -757,6 +809,8 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 | Folder layout | `/Game/SMHQ/{GF,L01..L06,ROOF}/`, `/Game/SMHQ/Blueprints/`, `/Game/SMHQ/Materials/Masters/`, `/Game/SMHQ/UI/`, `/Game/SMHQ/Data/`, `/Content/Movies/` |
 | Maps | `L_HQ_Persistent` (hand-authored, never touched by rebuild: SunSky, PPV, player start, UI managers) + per-floor sublevels `L_GF_Import` (Datasmith output, wiped every rebuild) and `L_GF_Generated` (doors/lights/info points/teleports, wiped every rebuild) |
 | Rebuild entry point | `Content/Python/smhq_rebuild.py`, headless: `UnrealEditor-Cmd.exe SMHQ_Virtual.uproject -run=pythonscript -script="<abs path>/smhq_rebuild.py"` *(verify that level load/save works in commandlet mode in 5.8; otherwise run inside the editor via `-ExecutePythonScript=`)* |
+| C++ build (agents, command line) | `"<UE_5.8>\Engine\Build\BatchFiles\Build.bat" SMHQ_VirtualEditor Win64 Development -Project="<abs>\SMHQ_Virtual.uproject" -WaitMutex` *(verify target name after project creation)* |
+| Toolchain | Visual Studio 2022 (not 2026), workloads: Desktop C++, .NET desktop, Game development with C++; Windows 11 SDK 10.0.22621.0 + 10.0.26100.0; MSVC v143 latest (≥ 14.38, *verify for 5.8*) |
 | Agent constraints | One editor instance on the current laptop; binary assets (`.umap`, `.uasset`) single-owner; parallel work only on text sources (C++, Python, CSV) |
 | Source control | Git + Git LFS; commit `.uasset/.umap`, ignore `Saved/`, `Intermediate/`, `DerivedDataCache/`, `Binaries/`; never commit the imported `L_GF_Import` content if it is fully reproducible (optional) |
 
@@ -801,14 +855,15 @@ r.VSync 0
 - Purge unused; meters; shared origin (0,0,0) across per-floor files.
 - Scenes for key viewpoints → become CineCameraActors → reusable as teleport anchors.
 
-Naming (approved 2026-10-13, BIM scheme): `DR_<Floor>_<Space>_<Door>_<Leaf>` e.g. `DR_GF_E28_D43_L` (Leaf `L|R`; single-leaf suffix **pending**). Maquettes `MQ-xx` (project code only in `Maquettes.csv`). Lights: **pattern pending** — script assumes `LT_<Floor>_<Space>_<...>`. Materials unchanged. Names live on the **component instance** (Entity Info → Instance).
+Naming (approved 2026-10-13, BIM scheme): doors `DR_<Floor>_<Space>_<Door>` single leaf (e.g. `DR_GF_E28_D43`), `DR_<Floor>_<Space>_<Door>_<L|R>` double leaf only. Lights `LT_<Floor>_<Space>_<Kind>_<NN>` (e.g. `LT_GF_E01_DOWN_03`). Switches `SW_<Floor>_<Space>_<NN>` (e.g. `SW_GF_E01_01`). Maquettes `MQ-xx` (project code only in `Maquettes.csv`). Materials unchanged. Names live on the **component instance** (Entity Info → Instance).
 
 CSV schedules under `<Project>/SMHQ_Data/`:
 
 | File | Columns |
 |---|---|
 | `Doors.csv` | `Floor,Door,Type,OpenAngle,OpenAngle_R,AutoOpen,Locked` (Type = Swing \| Sliding; booleans Yes/No; missing row → defaults + QA warning) |
-| `Lights.csv` | `Name,Kind,Lumens,Kelvin,IES` (Kind = DOWN \| SPOT \| PEND \| WALL \| LINE \| COVE; IES = asset path or empty) |
+| `LightTypes.csv` | `Kind,Lumens,Kelvin,IES` — defaults per Kind (DOWN \| SPOT \| PEND \| WALL \| LINE \| COVE) |
+| `Lights.csv` (optional) | `Name,Lumens,Kelvin,IES` — per-fixture overrides; empty cells fall back to `LightTypes.csv` |
 | `Spaces.csv` | `Floor,Space,NameAR,NameEN,Teleport,X,Y,Z,Yaw` (metres, model origin) |
 | `Maquettes.csv` | `Maquette,Project,Title,Description,Images,Video` → `DT_Maquettes` |
 | `Materials.csv` | `SketchUpMaterial,UnrealMaterial` |
@@ -843,11 +898,12 @@ GEN_TAG   = unreal.Name("SMHQ_GEN")       # everything this script creates
 IMP_TAG   = unreal.Name("SMHQ_IMPORT")    # everything Datasmith imported
 
 DOOR_RE  = re.compile(r"^DR_(?P<floor>[A-Z0-9]+)_(?P<space>E\d+)_(?P<door>D\d+)(?:_(?P<leaf>[LR]))?$")
-LIGHT_RE = re.compile(r"^LT_(?P<floor>[A-Z0-9]+)_(?P<space>E\d+)_")      # pattern pending (Yusuf)
+LIGHT_RE = re.compile(r"^LT_(?P<floor>[A-Z0-9]+)_(?P<space>E\d+)_(?P<kind>[A-Z]+)_(?P<num>\d+)$")
+SW_RE    = re.compile(r"^SW_(?P<floor>[A-Z0-9]+)_(?P<space>E\d+)_(?P<num>\d+)$")
 MQ_RE    = re.compile(r"(?P<mq>MQ-\d+)")
 
 BP = lambda name: unreal.EditorAssetLibrary.load_blueprint_class(f"/Game/SMHQ/Blueprints/{name}")
-DOOR_BP, ROOM_BP, INFO_BP = BP("BP_Door"), BP("BP_RoomLights"), BP("BP_InfoPoint")
+DOOR_BP, ROOM_BP, INFO_BP, SWITCH_BP = BP("BP_Door"), BP("BP_RoomLights"), BP("BP_InfoPoint"), BP("BP_LightSwitch")
 LIGHT_CLASS = {"DOWN": unreal.SpotLight, "SPOT": unreal.SpotLight, "PEND": unreal.PointLight,
                "WALL": unreal.PointLight, "LINE": unreal.RectLight, "COVE": unreal.RectLight}
 
@@ -911,12 +967,12 @@ for a in imported:
     m = DOOR_RE.match(label_of(a))
     if not m:
         if label_of(a).startswith("DR_"):
-            qa.append(("ERROR", "door", label_of(a), "name does not match DR_<Floor>_<E##>_<D##>_<L|R>"))
+            qa.append(("ERROR", "door", label_of(a), "name does not match DR_<Floor>_<E##>_<D##>[_L|_R]"))
         continue
     c = mesh_comp(a)
     if not c:
         continue
-    f, d, leaf = m["floor"], m["door"], m["leaf"] or "L"
+    f, d, leaf = m["floor"], m["door"], m["leaf"]          # leaf None = single-leaf door
     r = door_rows.get((f, d))
     if r is None:
         qa.append(("WARN", "door", label_of(a), "no row in Doors.csv — defaults used"))
@@ -934,25 +990,33 @@ for a in imported:
     door.set_editor_property("IsLocked", yes(r["Locked"]))
     tag(door, f"{f}_{m['space']}")
     a.set_actor_hidden_in_game(True); a.set_is_temporarily_hidden_in_editor(True)
-    leaves.setdefault((f, d), []).append(door)
-for key, pair in leaves.items():
-    if len(pair) == 2:
-        pair[0].set_editor_property("PairedLeaf", pair[1])
-        pair[1].set_editor_property("PairedLeaf", pair[0])
-    elif len(pair) > 2:
-        qa.append(("ERROR", "door", "_".join(key), f"{len(pair)} leaves with the same door code"))
+    leaves.setdefault((f, d), []).append((leaf, door))
+for key, group in leaves.items():
+    kinds = sorted(leaf or "-" for leaf, _ in group)
+    code = "_".join(key)
+    if kinds == ["L", "R"]:
+        (_, a1), (_, a2) = group
+        a1.set_editor_property("PairedLeaf", a2); a2.set_editor_property("PairedLeaf", a1)
+    elif kinds != ["-"]:
+        qa.append(("ERROR", "door", code, f"inconsistent leaves {kinds}: expect single (no suffix) or exactly _L + _R"))
 
 # ---------------------------------------------------------------- 5. lights + room managers
-light_rows, rooms = rows("Lights.csv", "Name"), {}
+type_rows, light_rows, rooms = rows("LightTypes.csv", "Kind"), rows("Lights.csv", "Name"), {}
 for a in imported:
     name = label_of(a)
     m = LIGHT_RE.match(name)
     if not m:
+        if name.startswith("LT_"):
+            qa.append(("ERROR", "light", name, "name does not match LT_<Floor>_<E##>_<KIND>_<NN>"))
         continue
-    r = light_rows.get((name,), {})
-    if not r:
-        qa.append(("WARN", "light", name, "no row in Lights.csv — defaults used"))
-    cls = LIGHT_CLASS.get((r.get("Kind") or "DOWN").upper(), unreal.SpotLight)
+    kind = m["kind"]
+    if kind not in LIGHT_CLASS:
+        qa.append(("ERROR", "light", name, f"unknown fixture kind {kind}")); continue
+    base, over = type_rows.get((kind,), {}), light_rows.get((name,), {})
+    if not base:
+        qa.append(("WARN", "light", name, f"kind {kind} missing in LightTypes.csv — engine defaults used"))
+    r = {k: (over.get(k) or base.get(k) or "") for k in ("Lumens", "Kelvin", "IES")}
+    cls = LIGHT_CLASS[kind]
     origin, extent = a.get_actor_bounds(False)
     loc = unreal.Vector(origin.x, origin.y, origin.z - extent.z - 2.0)
     rot = unreal.Rotator(0.0, -90.0, 0.0) if cls is not unreal.PointLight else unreal.Rotator()  # (roll, pitch, yaw)
@@ -969,10 +1033,33 @@ for a in imported:
             lc.set_editor_property("ies_texture", ies); lc.set_editor_property("use_ies_brightness", True)
     room = f"{m['floor']}_{m['space']}"
     tag(lt, room); rooms.setdefault(room, origin)
+managers = {}
 for room, origin in rooms.items():
     mgr = spawn(ROOM_BP, origin)
     mgr.set_actor_label(f"Room_{room}")
     mgr.set_editor_property("RoomCode", unreal.Name(room))
+    managers[room] = mgr
+
+# ---------------------------------------------------------------- 5b. wall switches -> room manager
+for a in imported:
+    name = label_of(a)
+    m = SW_RE.match(name)
+    if not m:
+        if name.startswith("SW_"):
+            qa.append(("ERROR", "switch", name, "name does not match SW_<Floor>_<E##>_<NN>"))
+        continue
+    c = mesh_comp(a)
+    room = f"{m['floor']}_{m['space']}"
+    sw = spawn(SWITCH_BP, a.get_actor_location(), a.get_actor_rotation())
+    sw.set_actor_label(f"Switch_{name}")
+    sw.set_actor_scale3d(a.get_actor_scale3d())
+    if c:
+        sw.get_editor_property("SwitchMesh").set_static_mesh(c.static_mesh)
+        a.set_actor_hidden_in_game(True); a.set_is_temporarily_hidden_in_editor(True)
+    if room in managers:
+        sw.set_editor_property("TargetRoom", managers[room])
+    else:
+        qa.append(("WARN", "switch", name, f"no lights found in {room} — switch does nothing"))
 
 # ---------------------------------------------------------------- 6. maquette info points
 mq_rows = rows("Maquettes.csv", "Maquette")
@@ -997,7 +1084,7 @@ for (f, sp), r in rows("Spaces.csv", "Floor", "Space").items():
 
 # ---------------------------------------------------------------- 8. QA + save
 counts = {k: sum(1 for x in actors.get_all_level_actors() if x.get_actor_label().startswith(k))
-          for k in ("Door_", "L_", "Room_", "Info_", "TP_")}
+          for k in ("Door_", "L_", "Room_", "Switch_", "Info_", "TP_")}
 with open(os.path.join(PROJECT, "Saved", "SMHQ_QA.csv"), "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f); w.writerow(["severity", "kind", "name", "message"])
     w.writerows(qa); w.writerow(["INFO", "counts", "", str(counts)])
@@ -1047,7 +1134,7 @@ BeginPlay: SetLights(StartOn)
 
 ### BP_LightSwitch
 ```
-Implements BPI_Interact; Var TargetRoom (BP_RoomLights, Instance Editable)
+Components: SwitchMesh(StaticMesh). Implements BPI_Interact; Var TargetRoom (BP_RoomLights, Instance Editable — set by rebuild script from SW_<Floor>_<E##>_<NN>)
 Event Interact → TargetRoom.Toggle → PlaySound(Click)
 ```
 
