@@ -5,6 +5,8 @@ Creates:
   /Game/SMHQ/Materials/M_SMHQ_Screen  media screen material  (texture param "Video", scalar "Brightness")
   /Game/SMHQ/Materials/M_SMHQ_Emissive fixture glow master  (vector "Color", scalars "EmissiveStrength", "Intensity")
   /Game/Movies/MS_<name>              FileMediaSource for every .mp4 found in Content/Movies
+  /Game/SMHQ/UI/F_SMHQ_Arabic         runtime font (Regular + Bold) from SMHQ_Data/fonts/NotoNaskhArabic-*.ttf
+                                      Noto Naskh Arabic = office identity font, SIL Open Font License 1.1 (SMHQ_Data/fonts/OFL.txt)
 
 Run inside the editor: Tools > Execute Python Script, or
   UnrealEditor.exe SMHQ_Virtual.uproject -ExecutePythonScript="<abs>/Content/Python/smhq_setup.py"
@@ -20,6 +22,9 @@ mel = unreal.MaterialEditingLibrary
 BP_DIR = "/Game/SMHQ/Blueprints"
 MAT_DIR = "/Game/SMHQ/Materials"
 MOVIE_DIR = "/Game/Movies"
+UI_DIR = "/Game/SMHQ/UI"
+FONT_DIR = os.path.join(unreal.Paths.project_dir(), "SMHQ_Data", "fonts")
+FONT_FILES = {"Regular": "NotoNaskhArabic-Regular.ttf", "Bold": "NotoNaskhArabic-Bold.ttf"}
 
 BLUEPRINTS = {
     "BP_Door": unreal.SMHQDoor,
@@ -129,7 +134,65 @@ def make_media_sources():
         log(f"created: {path}")
 
 
+def import_font_face(typeface, file_name):
+    path = os.path.join(FONT_DIR, file_name)
+    if not os.path.exists(path):
+        log(f"font file missing: {path}")
+        return None
+    task = unreal.AssetImportTask()
+    task.set_editor_property("filename", path)
+    task.set_editor_property("destination_path", UI_DIR)
+    task.set_editor_property("destination_name", f"FF_SMHQ_Arabic_{typeface}")
+    task.set_editor_property("automated", True)
+    task.set_editor_property("replace_existing", True)
+    task.set_editor_property("save", True)
+    asset_tools.import_asset_tasks([task])
+    for object_path in task.get_editor_property("imported_object_paths"):
+        asset = eal.load_asset(object_path)
+        if isinstance(asset, unreal.FontFace):
+            return asset
+    log(f"no FontFace imported from {file_name}")
+    return None
+
+
+def make_arabic_font():
+    """F_SMHQ_Arabic: runtime composite font, default typeface entries 'Regular' and 'Bold'.
+    If any step fails, do it by hand (plan section 2.7): import the TTFs, right-click the Regular
+    Font Face > Create Font, rename to F_SMHQ_Arabic, Font Cache Type = Runtime, add the Bold face."""
+    path = f"{UI_DIR}/F_SMHQ_Arabic"
+    if eal.does_asset_exist(path):
+        log(f"exists: {path}")
+        return
+    faces = {name: import_font_face(name, file) for name, file in FONT_FILES.items()}
+    faces = {name: face for name, face in faces.items() if face}
+    if "Regular" not in faces:
+        log("Arabic font NOT created - Regular face missing; UI falls back to the engine font")
+        return
+    try:
+        font = asset_tools.create_asset("F_SMHQ_Arabic", UI_DIR, unreal.Font, unreal.FontFactory())  # (verify)
+        font.set_editor_property("font_cache_type", unreal.FontCacheType.RUNTIME)
+        composite = font.get_editor_property("composite_font")
+        typeface = composite.get_editor_property("default_typeface")
+        entries = []
+        for name in ("Regular", "Bold"):
+            if name in faces:
+                data = unreal.FontData()
+                data.set_editor_property("font_face_asset", faces[name])    # (verify) exposed to Python?
+                entry = unreal.TypefaceEntry()
+                entry.set_editor_property("name", name)
+                entry.set_editor_property("font", data)
+                entries.append(entry)
+        typeface.set_editor_property("fonts", entries)
+        composite.set_editor_property("default_typeface", typeface)
+        font.set_editor_property("composite_font", composite)
+        eal.save_loaded_asset(font)
+        log(f"created: {path} ({', '.join(faces)})")
+    except Exception as exc:
+        log(f"Arabic font needs the manual steps (plan 2.7): {exc}")
+
+
 make_blueprints()
+make_arabic_font()
 make_screen_material()
 make_emissive_material()
 make_media_sources()

@@ -37,14 +37,15 @@ void USMHQHUDWidget::NativeDestruct()
 	Super::NativeDestruct();
 }
 
-UTextBlock* USMHQHUDWidget::MakeText(const FText& Text, int32 Size) const
+UTextBlock* USMHQHUDWidget::MakeText(const FText& Text, int32 Size, bool bBold) const
 {
 	UTextBlock* Block = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass());
 	Block->SetText(Text);
 	FSlateFontInfo Font = Block->GetFont();
 	if (UObject* FontAsset = FontObject.LoadSynchronous())
 	{
-		Font = FSlateFontInfo(FontAsset, Size);
+		// F_SMHQ_Arabic (Noto Naskh Arabic) has typefaces "Regular" and "Bold"
+		Font = FSlateFontInfo(FontAsset, Size, bBold ? FName(TEXT("Bold")) : FName(TEXT("Regular")));
 	}
 	else
 	{
@@ -112,7 +113,7 @@ void USMHQHUDWidget::BuildTree()
 		}
 	};
 
-	AddRow(MenuBox, MakeText(SMHQStrings::MenuTitle(), 24), 0.f);
+	AddRow(MenuBox, MakeText(SMHQStrings::MenuTitle(), 24, true), 0.f);
 	AddRow(MenuBox, MakeText(SMHQStrings::MenuPlaces(), 18), 16.f);
 	TeleportBox = WidgetTree->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass());
 	AddRow(MenuBox, TeleportBox);
@@ -148,7 +149,7 @@ void USMHQHUDWidget::BuildTree()
 	UVerticalBox* InfoBox = WidgetTree->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass());
 	InfoPanel->SetContent(InfoBox);
 
-	InfoTitle = MakeText(FText::GetEmpty(), 28);
+	InfoTitle = MakeText(FText::GetEmpty(), 28, true);
 	InfoProject = MakeText(FText::GetEmpty(), 18);
 	InfoImage = WidgetTree->ConstructWidget<UImage>(UImage::StaticClass());
 	InfoImage->SetDesiredSizeOverride(FVector2D(960.f, 540.f));

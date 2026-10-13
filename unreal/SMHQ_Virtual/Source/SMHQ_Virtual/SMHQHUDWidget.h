@@ -63,7 +63,7 @@ protected:
 
 private:
 	void BuildTree();
-	UTextBlock* MakeText(const FText& Text, int32 Size) const;
+	UTextBlock* MakeText(const FText& Text, int32 Size, bool bBold = false) const;
 	USMHQListButton* MakeButton(const FText& Label, int32 Index, bool bTeleport, int32 FontSize = 18);
 	void HandleTeleportIndex(int32 Index);
 	void HandleCommandIndex(int32 Index);

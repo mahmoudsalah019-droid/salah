@@ -25,7 +25,7 @@ Plan (Arabic, with English appendix): [`../../virtual-office-unreal-plan.md`](..
    Save the full log. Toolchain line to look for: `Using Visual Studio 20xx 14.xx.xxxxx toolchain`.
 2. Open the project once in the editor (first shader compile can take hours on the Arc 140T). Create the pilot level with a SunSky, a Post Process Volume (unbound, manual exposure) and a Player Start; save it.
 3. Run `smhq_setup.py` once (Tools → Execute Python Script).
-4. Import an Arabic-capable font as `/Game/SMHQ/UI/F_SMHQ_Arabic` (e.g. Noto Naskh Arabic) — until then the UI uses the engine default font, which may not render Arabic (verify on day 1).
+4. `smhq_setup.py` also builds `/Game/SMHQ/UI/F_SMHQ_Arabic` from `SMHQ_Data/fonts/NotoNaskhArabic-{Regular,Bold}.ttf` (office identity font, SIL OFL 1.1 — keep `OFL.txt` with it). If the scripted font step fails, follow the manual steps in plan section 2.7. Verify Arabic shaping and right-to-left order on screen.
 5. Each session: export `HQ_GF.udatasmith` from SketchUp into `SMHQ_Data/export/`, open the pilot level, run `smhq_rebuild.py`, read `Saved/SMHQ_QA.csv`.
 6. Play (PIE) and evaluate the 13 locked checks in `PROJECT.md`. Report: table pass / fail / needs verification + screenshots + the QA CSV.
 
@@ -39,7 +39,7 @@ Plan (Arabic, with English appendix): [`../../virtual-office-unreal-plan.md`](..
 | `Spaces.csv` | `Floor,Space,NameAR,NameEN,Teleport,X,Y,Z,Yaw` | Teleport anchors, metres from the model origin, Z = floor level |
 | `Maquettes.csv` | `Maquette,Project,Title,Description,Images,Video` | `Images` = `;`-separated texture asset paths; `Video` = media source asset path |
 | `Materials.csv` | `SketchUpMaterial,UnrealMaterial` | Substring match on the imported material name |
-| `Screens.csv` | `Screen,Media,AutoPlay,Loop,DimRoom,HallSizeX,HallSizeY,HallSizeZ,HallOffsetX,HallOffsetY,HallOffsetZ` | Screen name `SCR_<Floor>_<E##>_<NN>` (**pending approval**); sizes/offsets in metres |
+| `Screens.csv` | `Screen,Media,AutoPlay,Loop,DimRoom,HallSizeX,HallSizeY,HallSizeZ,HallOffsetX,HallOffsetY,HallOffsetZ` | Approved names: `SCR_GF_E27_01` (auditorium, dims E27) and `SCR_GF_E09_01` (project gallery, no dimming). Fill `Media` and hall sizes (m) before the pilot |
 
 ## Things to verify on day 1 (expected first-compile risks)
 
@@ -47,6 +47,6 @@ Plan (Arabic, with English appendix): [`../../virtual-office-unreal-plan.md`](..
 - SunSky Blueprint still exposes `SolarTime` and `UpdateSun`.
 - Python names: `DatasmithSceneElement.import_scene`, `StaticMesh.nanite_settings`, `StaticMeshEditorSubsystem.add_simple_collisions`, `MediaTextureFactoryNew`, `FileMediaSourceFactoryNew`.
 - Media in UI: a `UMediaTexture` drawn directly in a `UImage` brush.
-- Arabic text shaping and right-to-left order in UMG with the chosen font.
+- Arabic text shaping and right-to-left order in UMG with Noto Naskh Arabic; Python access to `FontData.font_face_asset`.
 
 Any compile error: send the full UBT log back; do not edit around it silently.

@@ -15,7 +15,7 @@ Naming (approved 2026-10-13):
   LT_<Floor>_<E##>_<KIND>_<NN>    light fixture             LT_GF_E01_DOWN_03
   SW_<Floor>_<E##>_<NN>           wall switch               SW_GF_E01_01
   MQ-<NN>                         maquette                  MQ-03
-  SCR_<Floor>_<E##>_<NN>          cinema screen             SCR_GF_E05_01   (PENDING approval)
+  SCR_<Floor>_<E##>_<NN>          video screen              SCR_GF_E27_01 (auditorium), SCR_GF_E09_01 (gallery)
 
 Run with the level that should receive the content open (pilot: one level; generated actors are tagged and
 replaced every run, hand-placed actors such as SunSky / PostProcess / PlayerStart are never touched).
@@ -360,6 +360,8 @@ def build_screens(imported, managers):
             row = {}
         comp = mesh_component(a)
         source = load(row.get("Media"))
+        if source is None:
+            issue("WARN", "screen", label, f"media source missing or not found: {row.get('Media') or '(empty)'}")
         room = f"{m['floor']}_{m['space']}"
         extent = unreal.Vector(num(row.get("HallSizeX"), 20.0) * 50.0, num(row.get("HallSizeY"), 20.0) * 50.0,
                                num(row.get("HallSizeZ"), 6.0) * 50.0)        # size in m -> half extent in cm
