@@ -1,6 +1,8 @@
 # خطة المكتب الافتراضي التفاعلي — مقر صلاح محجوب للعمارة والتصميم
 
-**المحرك:** Unreal Engine 5.8 — **المصدر:** موديل SketchUp — **إعداد:** أكتوبر 2026
+**المحرك:** Unreal Engine 5.8 — **المصدر:** موديل SketchUp 2023 — **إعداد:** أكتوبر 2026 — **مراجعة 2:** 2026-10-13 (التسمية والـ Checks اتعتمدوا، الجهاز الحالي اتحدد، المدة اتحسبت تاني على فريق بالتوازي)
+
+> **الحالة:** الخطة معتمدة للتجهيز بس. **التجربة في Unreal مش هتبدأ غير لما م. صلاح يقول**، بعد ما يراجع تعديلات الموديل في SketchUp.
 
 > **ملحوظة عن المصادر:** كل اللينكات من التوثيق الرسمي لـ Epic (dev.epicgames.com وunrealengine.com)، وقت كتابة الخطة. أي رقم مكتوب جنبه **"يحتاج تحقق"** معناه إن لازم نراجعه على صفحة Epic أو عند المورّد قبل ما نعتمده، خصوصاً الأسعار. لو لينك اتنقل، دوّر بعنوان الصفحة في [Epic Developer Community](https://dev.epicgames.com/documentation/en-us/unreal-engine).
 
@@ -13,11 +15,11 @@
 | النقل من SketchUp | **Datasmith** (مش FBX). بيحافظ على الأسماء والخامات ونقط اللف ونسخ الكومبوننتس. |
 | التفاعل | **Blueprint** من غير كود: باب، نور، تمشية، تنقّل سريع، نقط معلومات، فيديو. |
 | الإضاءة | **Lumen** للإضاءة المرتدة والانعكاسات، و**Nanite** للتفاصيل التقيلة، و**SunSky** على موقع جدة الحقيقي. |
-| الجهاز الحالي | نشتغل على **الدور الأرضي بس**، بجودة Medium (يعني **Lumen Lite** في 5.8)، ودقة شاشة مخفّضة. |
+| الجهاز الحالي | Intel Arc 140T **مدمج** (بياخد لحد 16 جيجا من الرامات): نطاق التجربة بس، بجودة Low/Medium (**Lumen Lite**) ودقة مخفّضة. للبلوبرنت والتفاعل، مش للشكل النهائي. |
 | الجهاز الجديد RTX 5080 | جودة Epic، و**Hardware Ray Tracing**، و**MegaLights** للإضاءة الليلية الكتير، وهو كمان اللي هيعمل التغليف (Packaging) ويشغّل البث. |
 | التسليم | (1) برنامج ويندوز `.exe` للعميل اللي عنده جهاز كويس. (2) لينك من المتصفح بـ **Pixel Streaming** للباقي. (3) فيديو وصور 360 كاحتياطي للموبايل. |
-| نبدأ بإيه | تجربة أولى أسبوعين: البهو والاستقبال، باب واحد يتفتح، ومجموعة نور تولّع وتطفي، ونقطة معلومات واحدة. |
-| المدة | حوالي **14–16 أسبوع** للدور الأرضي كامل تفاعلي، والأدوار اللي فوق تتضاف لما تصميمها يخلص. |
+| نبدأ بإيه | تجربة أولى **أسبوع واحد** (5 أيام شغل بفريق بالتوازي): البهو والاستقبال، باب واحد يتفتح، ومجموعة نور تولّع وتطفي، ونقطة معلومات واحدة. **بتبدأ لما م. صلاح يقول بس.** |
+| المدة | حوالي **6 أسابيع** للدور الأرضي جاهز للعميل (+ أسبوع احتياطي = 7)، بفريق 3 أشخاص وسكربتات. الأدوار اللي فوق 2–3 أيام للدور المكرر لما تصميمها يخلص. |
 
 ---
 
@@ -40,7 +42,7 @@
 - [Datasmith Supported Software and File Types](https://dev.epicgames.com/documentation/en-us/unreal-engine/datasmith-supported-software-and-file-types)
 - [Using Datasmith with SketchUp Pro](https://dev.epicgames.com/documentation/en-us/unreal-engine/using-datasmith-with-sketchup-pro)
 - [Exporting Datasmith Content from SketchUp Pro](https://dev.epicgames.com/documentation/en-us/unreal-engine/exporting-datasmith-content-from-sketchup-pro-to-unreal-engine)
-- [SketchUp Pro Exporter (تحميل البلجن)](https://www.unrealengine.com/en-US/plugins/sketchup-pro) — صفحة Epic بتقول إنه بيدعم UE 5.8 وSketchUp Pro من 2019 لـ 2026. **يحتاج تحقق** على النسخة اللي عندنا وقت التحميل.
+- [SketchUp Pro Exporter (تحميل البلجن)](https://www.unrealengine.com/en-US/plugins/sketchup-pro) — صفحة Epic بتقول إنه بيدعم UE 5.8 وSketchUp Pro من 2019 لـ 2026. SketchUp 2023 اللي عندنا جوه المدى ده. **يحتاج تحقق** يوم 1 إن الـ Sync بـ DirectLink شغال عليها (فيه شكاوى قديمة في منتدى SketchUp من مشاكل Sync مع بعض النسخ)، ولو فيه مشكلة نصدّر ملف `.udatasmith` يدوي بدل DirectLink.
 - [Datasmith DirectLink](https://dev.epicgames.com/documentation/en-us/unreal-engine/datasmith-directlink-in-unreal-engine)
 
 ### 1.2 تجهيز الموديل في SketchUp قبل التصدير (مراجعة نهائية)
@@ -52,7 +54,8 @@
    - الحلق (الإطار) يفضل **برّه** كومبوننت الضلفة، علشان الحلق ثابت والضلفة بس هي اللي تلف.
    - الباب بضلفتين = كومبوننتين، كل واحد ليه مفصّلته.
    - الباب السحّاب: نفس الفكرة، والأصل في أي ركن، وهيتحرك على خط بدل ما يلف.
-2. **وحدات الإضاءة:** SketchUp مفيهوش لمبات حقيقية، فاللي هيتنقل هو **شكل الوحدة** (الجسم). في Unreal هنحط جوه كل وحدة لمبة حقيقية أوتوماتيك بالاسم (شوف الملحق التقني A.4). علشان كده الاسم الثابت مهم جداً.
+   - **اسم الباب `D-xx` يتكتب في اسم الـ Instance** (Entity Info ← Instance)، مش بس في اسم الـ Definition. لو 10 أبواب نفس الموديل، هيبقوا Definition واحدة و10 Instances كل واحد باسمه. هنتأكد في التجربة إن Datasmith بينقل اسم الـ Instance (Check 1).
+2. **وحدات الإضاءة:** نفس الكلام: Component، واسمها الثابت في اسم الـ Instance. SketchUp مفيهوش لمبات حقيقية، فاللي هيتنقل هو **شكل الوحدة** (الجسم). في Unreal هنحط جوه كل وحدة لمبة حقيقية أوتوماتيك بالاسم (شوف الملحق التقني A.4). علشان كده الاسم الثابت مهم جداً.
 3. **الوشوش المقلوبة:** في SketchUp، أي وش أزرق-رمادي (Back Face) باين للناس هيطلع غلط في Unreal. استخدم **View ← Face Style ← Monochrome** وصلّح أي وش مقلوب (**Reverse Faces**).
 4. **الخامة على الوش الأمامي بس**، مش على الجروب من برّه ولا على الوش الخلفي.
 5. **امسح الحاجات المستخبية والزيادة:** **Window ← Model Info ← Statistics ← Purge Unused**، وامسح أي Tags مقفولة مش محتاجينها.
@@ -61,22 +64,34 @@
 8. **ملفات منفصلة لكل دور** (موصى بيه): ملف `HQ_GF.skp` للأرضي، وملف لكل دور فوق، على نفس نقطة الأصل (0,0,0). كده نقدر ننقل ونحدّث كل دور لوحده.
 9. **المتر:** تمام، Datasmith بيحوّل للسنتيمتر اللي Unreal بيشتغل بيه لوحده. هنتأكد في التجربة الأولى إن ارتفاع الباب 2.10 م بيطلع 210 سم.
 
-### 1.3 نظام تسمية مقترح (محتاج موافقتك)
+### 1.3 نظام التسمية (معتمد 2026-10-13)
 
-لو أسماءك الحالية مختلفة مش مشكلة، المهم تكون ثابتة وفيها **نوع العنصر + الدور + الأوضة + رقم**:
+**القاعدة:** Unreal هو اللي يتكيّف مع الموديل، مش العكس. مفيش إعادة تسمية في SketchUp غير اللي إنت قررته.
 
-| العنصر | الصيغة | مثال |
+| العنصر | الاسم في SketchUp | ملاحظة |
 |---|---|---|
-| ضلفة باب لف | `DR_[دور]_[أوضة]_[رقم]` | `DR_GF_MEET_01` |
-| باب سحاب | `DS_[دور]_[أوضة]_[رقم]` | `DS_GF_LOBBY_01` |
-| وحدة إضاءة | `LT_[دور]_[أوضة]_[نوع]_[رقم]` | `LT_GF_LOBBY_DOWN_03` |
-| مفتاح نور على الحيطة | `SW_[دور]_[أوضة]_[رقم]` | `SW_GF_LOBBY_01` |
-| ماكيت/مشروع معروض | `EX_[دور]_[كود المشروع]` | `EX_GF_D-07` |
-| شاشة العرض | `SCR_[دور]_[أوضة]` | `SCR_GF_AUDI` |
+| ضلفة باب | `D-xx` (مثلاً `D-12`) | Component، محاوره على المفصّلة، والاسم في الـ Instance |
+| فراغ (أوضة/منطقة) | `E-xx` (مثلاً `E-03`) | |
+| الخامات | زي ما هي بالظبط | |
+| وحدة إضاءة | الاسم الثابت الحالي | Component، والاسم في الـ Instance |
 
-أنواع الإضاءة المقترحة: `DOWN` (داون لايت)، `LINE` (خطي)، `PEND` (معلّق)، `WALL` (جداري)، `COVE` (مخفي في سقف)، `SPOT` (سبوت على المعروضات).
+**كل حاجة مش في الاسم بتتكتب في جداول** (Excel يتحفظ CSV) — نفس فكرة جدول الأبواب المعماري، والسكربت هو اللي بيقراها:
 
-أكواد الأماكن في الأرضي: `LOBBY` الاستقبال، `GARDEN` الحديقة تحت الأتريوم، `CAFE` القهوة، `EXPO` المعرض، `AUDI` قاعة العرض، `MEET` الاجتماعات، `PRAY` المصلى، `WC` الحمامات.
+| الجدول | الأعمدة | مثال |
+|---|---|---|
+| `Doors.csv` | Code, Space, Type (Swing / Sliding), OpenAngle, AutoOpen, Locked | `D-12, E-03, Swing, 90, No, No` |
+| `Lights.csv` | Name, Space, Kind (DOWN / SPOT / PEND / WALL / LINE / COVE), Lumens, Kelvin, IES | `<اسم الوحدة>, E-01, DOWN, 900, 3000, <ملف IES>` |
+| `Spaces.csv` | Code, NameAR, NameEN, Floor, Teleport (Yes/No) | `E-01, الاستقبال, Reception, GF, Yes` |
+| `Projects.csv` | Code, Title, Description, Images, Video | `D-07, …` (لنقط المعلومات) |
+
+ميزة الجداول: أي تعديل (زاوية فتح باب، شدة نور، باب يتقفل) بيتعمل في الإكسل ويتعاد تشغيل السكربت في دقايق، من غير ما حد يفتح Unreal.
+
+> **⚠ تعارض لازم ناخد فيه قرار:** أكواد مشاريع البورتفوليو كمان `D-01` لحد `D-24`، وهي اللي هتظهر على نقط المعلومات في المعرض. علشان مايحصلش لخبطة:
+> 1. السكربت مش هيعتبر أي حاجة اسمها بيبدأ بـ `D-` باب؛ **الأبواب هي اللي في `Doors.csv` بس**.
+> 2. جوه Unreal، بيانات المشاريع مفتاحها `PRJ_D-07`، والزائر بيشوف `D-07` عادي.
+> 3. **الماكيتات نفسها في SketchUp ماتتسماش `D-xx`.** اقتراح: `M-xx` أو اسم المشروع. (محتاج قرارك.)
+>
+> **محتاج تأكيد كمان:** الباب بضلفتين بيتسمى إزاي؟ اقتراح: `D-12-L` و`D-12-R`، وكل ضلفة سطر في `Doors.csv` (واحدة 90 والتانية −90). وهل أرقام `D-xx` و`E-xx` مش بتتكرر في المبنى كله، ولا بتبدأ من الأول في كل دور؟ لو بتتكرر، هنضيف عمود Floor للجداول.
 
 ### 1.4 عائلات Revit (21,490) ومكتبة SketchUp
 
@@ -122,7 +137,7 @@
 
 9. **شغّل Nanite على الحاجات التقيلة:** في الـ Content Browser افتح `/Game/SMHQ/GF/Geometries`، اختار الأشكال المعتمة (كراسي القاعة، الماكيتات، الواجهات، الدرابزين، الحديقة) ← كليك يمين ← **Nanite ← Enable**. **ماتشغّلوش على الزجاج** (الحاجات الشفافة مش بتشتغل مع Nanite). [Nanite Virtualized Geometry](https://dev.epicgames.com/documentation/en-us/unreal-engine/nanite-virtualized-geometry-in-unreal-engine)
 10. **تحقق سريع:**
-    - عدّي على 3 أبواب واتأكد إن الـ Pivot (الأسهم لما تختار الباب) على المفصّلة.
+    - عدّي على 3 أبواب واتأكد إن الـ Pivot (الأسهم لما تختار الباب) على المفصّلة، وإن اسمها في الـ Outliner هو `D-xx` نفسه.
     - قيس باب: في نافذة جانبية (Front أو Left) اسحب بزرار الماوس الأوسط من تحت لفوق الباب، هيظهرلك المقاس. لازم 210 لو الباب 2.10 م.
     - دوّر على أي حتة سودا أو شفافة غلط = وش مقلوب ← ارجع SketchUp صلّحه.
 
@@ -214,10 +229,10 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 **هـ. ربطه بالموديل (أهم خطوة):**
 1. اسحب `BP_Door` في الـ Level.
-2. في Details ← `DoorMesh` ← **Static Mesh** ← اختار شكل الضلفة اللي جه من Datasmith (`DR_GF_MEET_01`).
+2. في Details ← `DoorMesh` ← **Static Mesh** ← اختار شكل الضلفة اللي جه من Datasmith (`D-12`).
 3. حط الـ BP_Door بالظبط في مكان الضلفة الأصلية. **أسهل طريقة:** اختار الضلفة الأصلية ← انسخ الـ Location والـ Rotation من الـ Details ← الصقهم في الـ BP_Door.
 4. اخفي الضلفة الأصلية اللي من Datasmith (**Actor Hidden In Game ✔** و**Visible ✖**). ماتمسحهاش، علشان DirectLink مايرجعهاش.
-5. علشان 200 باب: السكربت في الملحق A.4 بيعمل الخطوات دي أوتوماتيك لكل عنصر اسمه بيبدأ بـ `DR_` أو `DS_`.
+5. علشان 200 باب: السكربت في الملحق A.4 بيعمل الخطوات دي أوتوماتيك لكل باب مكتوب في `Doors.csv`، وبياخد منه النوع والزاوية والفتح الأوتوماتيك والقفل.
 
 **و. صوت:** نحط صوت فتح وقفل (Sound Cue) على **Play** و**Reverse**. يفرق في الإحساس جداً.
 
@@ -230,7 +245,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 2. متغيّرات Instance Editable:
    | المتغيّر | النوع | معناه |
    |---|---|---|
-   | `RoomCode` | Name | مثلاً `GF_LOBBY` |
+   | `RoomCode` | Name | كود الفراغ، مثلاً `E-01` |
    | `Lights` | Array of **Light** (Object Reference) | اللمبات اللي في الأوضة |
    | `EmissiveMeshes` | Array of Static Mesh Actor | أجسام الوحدات اللي بتنوّر |
    | `IsOn` | Boolean | حالة النور |
@@ -241,7 +256,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
    - Set `IsOn` = On.
 4. دالة **Toggle**: تنادي SetLights بعكس `IsOn`.
 5. **Event BeginPlay** ← SetLights(`StartOn`).
-6. **ملء القائمة أوتوماتيك:** بدل ما تختار اللمبات واحدة واحدة، في **Construction Script**: **Get All Actors with Tag** (التاج = `RoomCode`) ← حطهم في `Lights`. والسكربت (ملحق A.4) بيدي كل لمبة تاج أوضتها من اسمها (`LT_GF_LOBBY_...` ← `GF_LOBBY`).
+6. **ملء القائمة أوتوماتيك:** بدل ما تختار اللمبات واحدة واحدة، في **Construction Script**: **Get All Actors with Tag** (التاج = `RoomCode`) ← حطهم في `Lights`. والسكربت (ملحق A.4) بيدي كل لمبة تاج فراغها من عمود Space في `Lights.csv` (مثلاً `E-01`).
 
 **ب. `BP_LightSwitch`:**
 1. **Actor** فيه Static Mesh لمفتاح على الحيطة + Interface `BPI_Interact`.
@@ -312,7 +327,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
    - Texture Sample (الـ Media Texture) ← **Emissive Color** (مضروب في Scalar اسمه `Brightness` = 2 تقريباً).
    - **Base Color** = أسود، **Roughness** = 0.3.
    - كده الشاشة بتنوّر وبتأثر على القاعة كلها بالإضاءة بفضل Lumen (نور الفيديو بيقع على الكراسي — شكله حلو جداً في قاعة مضلمة).
-6. حط `M_Screen` على شكل الشاشة `SCR_GF_AUDI`.
+6. حط `M_Screen` على شكل الشاشة في قاعة العرض.
 7. **`BP_CinemaScreen`** (Actor):
    - متغيّرات: `Player` (MP_Auditorium)، `Source` (MS_Showreel)، `AutoPlayOnEnter` (✔).
    - Component: **Media Sound** (صوت الفيديو، مربوط بالـ Media Player) متحط عند الشاشة؛ و`HallTrigger` (Box Collision) قد القاعة.
@@ -408,29 +423,32 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 ## 4. الأداء: الجهاز الحالي والجهاز الجديد
 
-### 4.1 الجهاز الحالي (Intel Arc + 31 جيجا)
+### 4.1 الجهاز الحالي (Core Ultra 7 255H + Intel Arc 140T مدمج + 31 جيجا متاحة)
 
-> **سؤال مهم:** هل كارت الـ Intel Arc **منفصل** (زي A770 أو B580) ولا **مدمج** في البروسيسور (Core Ultra)؟ الـ 31 جيجا بدل 32 بيلمّح إن ممكن يكون **مدمج وبياخد من الرامات**. لو مدمج يبقى ضعيف جداً على Unreal، والجهاز الحالي يبقى للتجربة الأولى بس.
+**الصورة بصراحة:** الكارت **مدمج** وبياخد من الرامات لحد 16 جيجا. يعني اللي فاضل لويندوز وUnreal والبرامج التانية حوالي 15–16 جيجا. ده أقل بكتير من توصية Epic العامة لـ UE5 (كارت DirectX 12 بذاكرة 8 جيجا أو أكتر، و32 جيجا رامات). [Hardware and Software Specifications](https://dev.epicgames.com/documentation/en-us/unreal-engine/hardware-and-software-specifications-for-unreal-engine) — **يحتاج تحقق** على صفحة 5.8.
 
-متطلبات Epic العامة لـ UE5: ويندوز 11، 32 جيجا رامات، كارت DirectX 12 بذاكرة 8 جيجا أو أكتر. [Hardware and Software Specifications](https://dev.epicgames.com/documentation/en-us/unreal-engine/hardware-and-software-specifications-for-unreal-engine). **يحتاج تحقق** على صفحة 5.8.
+**دوره في المشروع:** نبني ونجرّب عليه **التفاعل والبلوبرنتس** في نطاق التجربة (البهو والاستقبال). **الشكل النهائي** للإضاءة والخامات بيتقيّم على الجهاز الجديد.
 
-إعدادات الشغل على الجهاز الحالي:
-1. **الدور الأرضي بس** مفتوح، والأدوار اللي فوق في ملفات منفصلة.
-2. نافذة الشغل: **Settings ← Engine Scalability Settings ← Medium** (يعني Lumen Lite)، ولو تقيل **Low** وإنت بتبني، وارجع Medium وإنت بتقيّم الشكل.
-3. **Screen Percentage** 50–67% في نافذة الشغل (من قايمة **Perspective ← Screen Percentage**).
-4. **Realtime** في النافذة اقفله (Ctrl+R) وإنت بتعمل حاجة مش محتاجة تشوف حركة.
-5. **Hardware Ray Tracing** مقفول، وMegaLights مقفول، ولمبات بظل قليلة.
-6. **أول فتحة للمشروع هتاخد وقت طويل جداً** (Compiling Shaders)، ممكن ساعات. ده عادي، مرة واحدة.
-7. المشروع وملفات الكاش (DDC) على **SSD** مش هارد عادي.
-8. اقفل البرامج التانية (Twinmotion، SketchUp، المتصفح) وUnreal مفتوح.
-9. حدّث درايفر Intel Arc لآخر نسخة قبل ما تبدأ.
-10. **الهدف:** 30 fps في التجربة الأولى على 1080p Medium. لو أقل، يبقى الشغل على الجهاز الحالي للتظبيط والتفاعل بس، والشكل النهائي على الجديد.
+**الإعدادات:**
+1. اللابتوب **على الشاحن** دايماً، و**Windows ← Power Mode ← Best performance**، وفي **Intel Graphics Software** اختار وضع الأداء. وحدّث درايفر Intel Arc لآخر نسخة.
+2. **ماتفتحش SketchUp وTwinmotion وUnreal مع بعض.** الرامات هي عنق الزجاجة.
+3. نطاق التجربة بس في الـ Level. باقي الدور في ملف منفصل.
+4. نافذة الشغل: **Settings ← Engine Scalability Settings ← Low** وإنت بتبني، و**Medium** (Lumen Lite) وإنت بتقيس أو بتقيّم.
+5. **Screen Percentage** 50% في نافذة الشغل.
+6. **Realtime** في النافذة اقفله (Ctrl+R) وإنت مش محتاج تشوف حركة.
+7. **Hardware Ray Tracing** مقفول، و**MegaLights** مقفول، وعدد قليل من اللمبات اللي بتعمل ظل.
+8. حجم الصور: أقصى حاجة 2K للخامات في التجربة.
+9. **Editor Preferences ← General ← Performance ← Use Less CPU when in Background ✔**.
+10. **أول فتحة للمشروع هتاخد وقت طويل** (Compiling Shaders). لو الجهاز علّق أو الرامات خلصت أثناءها، سيبه يكمّل، ولو اتكررت نقلل عدد العمليات اللي شغالة على التوازي (ملحق A.7).
+11. المشروع والكاش على الـ SSD الداخلي.
+
+**Check 11** (30 fps أو أكتر على 1080p بجودة Medium **على الجهاز الحالي**) هو أكتر Check ممكن يفشل بسبب الكارت المدمج. **مش هنسهّله**؛ هنقيسه بأمانة. لو فشل، هنكتبه "فاشل" ومعاه الرقم الحقيقي وأسبابه، وإنت تقرر: إما استثناء صريح، أو نعيد القياس على الجهاز الجديد.
 
 ### 4.2 الجهاز الجديد (RTX 5080 + 64 جيجا)
 
 | البند | الحالي | الجديد |
 |---|---|---|
-| جودة الشغل | Medium/Low | **Epic** |
+| جودة الشغل | Low/Medium (كارت مدمج) | **Epic** |
 | Lumen | Lite / Software | **Hardware Ray Tracing** |
 | انعكاسات الزجاج والرخام | تقريبية | دقيقة |
 | اللمبات الليلية بظل | قليلة | مئات بـ **MegaLights** |
@@ -516,7 +534,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 - **Unreal مجاني** للشركات اللي **إيرادها السنوي أقل من مليون دولار** (≈ 3.75 مليون ريال).
 - لو الإيراد أكتر: **Unreal Subscription** حوالي **1,850 دولار/سنة للمقعد** (≈ 6,940 ريال) — سعر 2024، **يحتاج تحقق**.
 - **تغيير مهم:** Epic بتقول إنه **من 27 مايو 2026** اشتراك Unreal **ماعادش بيشمل Twinmotion**. يعني لو إيراد المكتب فوق المليون، Twinmotion ليه ترخيص منفصل (كان 445 دولار/سنة في 2024 — **يحتاج تحقق**).
-- **سؤال لك:** إيراد المكتب السنوي فوق ولا تحت مليون دولار؟ ده بيحدد لو الترخيص ببلاش ولا لأ.
+- **لسه محتاج الإجابة:** الرد وصل فيه `[تحت / فوق]` من غير اختيار. لو **تحت** المليون: Unreal ببلاش، وTwinmotion حسب ترخيصه الحالي. لو **فوق**: اشتراك Unreal لكل مقعد (لكل واحد في الفريق بيشتغل على Unreal) + Twinmotion منفصل.
 - المراجعة النهائية: [Unreal Engine License / EULA](https://www.unrealengine.com/en-US/license).
 
 ### 5.5 ملخص التكلفة (تقديري — بالدولار)
@@ -534,7 +552,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 ---
 
-## 6. التجربة الأولى: البهو والاستقبال (أسبوعين)
+## 6. التجربة الأولى: البهو والاستقبال (أسبوع — بتبدأ بإذن م. صلاح بس)
 
 ### 6.1 النطاق
 
@@ -547,9 +565,9 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
   5. نقطتين تنقّل سريع (المدخل والاستقبال).
 - **برّه النطاق:** باقي الدور، الأسانسير، الفيديو، Pixel Streaming.
 
-### 6.2 Checks مقترحة للتجربة الأولى (محتاجة موافقتك قبل ما نبدأ)
+### 6.2 Checks معتمدة للتجربة الأولى (اتقفلت 2026-10-13)
 
-بعد ما توافق عليها هتتقفل ومش هنسهّلها أثناء الشغل.
+م. صلاح وافق على الـ 13 Check دول. **مقفولين:** مفيش تعديل ولا تسهيل أثناء الشغل غير بموافقة صريحة جديدة. (نسخة منهم محفوظة في `PROJECT.md`.)
 
 | # | المعيار (نعم/لا) |
 |---|---|
@@ -569,52 +587,67 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 **الحاجات اللي الـ Checks دي مابتقيسهاش** (هنعلّق عليها في التقرير): الإحساس العام بالواقعية، توازن ألوان الخامات، راحة سرعة المشي. دي تقييمك إنت بالعين.
 
-### 6.3 خطوات التجربة يوم بيوم
+### 6.3 قبل التجربة: تعديلات الموديل (عند فريق SketchUp)
 
-| اليوم | الشغل |
-|---|---|
-| 1 | مراجعة الموديل في SketchUp (القسم 1.2): أبواب Components بمحاور على المفصّلة، وشوش مقلوبة، Tags، أسماء. فصل نطاق التجربة في ملف `HQ_GF_Pilot.skp`. |
-| 2 | تنزيل بلجن Datasmith، تصدير، إنشاء مشروع First Person، تفعيل البلجنز، استيراد. Checks 1–3. |
-| 3 | Nanite على الأشكال التقيلة، ظبط الـ Collision، ارتفاع العين والسرعة. Check 8. |
-| 4 | SunSky على جدة، Post Process، Exposure. إضاءة نهار مبدئية. |
-| 5 | لمبات الاستقبال (يدوي في التجربة، أو بالسكربت A.4) + IES + درجة اللون. إضاءة ليل مبدئية. |
-| 6 | `BPI_Interact` + `IA_Interact` + الـ Line Trace في الشخصية. |
-| 7 | `BP_Door` + ربطه بالباب. Checks 4–5. |
-| 8 | `BP_RoomLights` + `BP_LightSwitch` + خامة Emissive. Check 6. |
-| 9 | `BP_DayNight` + `WBP_Menu` (نقطتين تنقّل + نهار/ليل). Checks 7 و10. |
-| 10 | `BP_InfoPoint` + `WBP_InfoPanel` على ماكيت واحد. Check 9. |
-| 11 | استبدال 4–6 خامات أساسية بخامات PBR حقيقية + تفاصيل حياة (نباتات، كتب، ماكيت). |
-| 12 | قياس الأداء (Check 11) — **stat fps** و**stat unit** في الـ Console (`~`). تخفيف لو محتاج. |
-| 13 | اختبار DirectLink (Check 12) + تغليف .exe وتجربته على جهاز تاني (Check 13). |
-| 14 | تقرير التقييم: جدول الـ 13 Check (ناجح/فاشل/يحتاج تحقق) + فيديو قصير 1–2 دقيقة + قرار نكمل ولا نعدّل الطريقة. |
+1. الأبواب ووحدات الإضاءة Components، ومحاور الأبواب على المفصّلة.
+2. الأسماء في الـ Instances: `D-xx`، `E-xx`، وأسماء الإضاءة الثابتة.
+3. الجداول الأربعة (`Doors.csv`، `Lights.csv`، `Spaces.csv`، `Projects.csv`) لنطاق التجربة على الأقل.
+4. قرار تسمية الماكيتات والأبواب بضلفتين (1.3).
+5. فصل نطاق التجربة في ملف `HQ_GF_Pilot.skp`.
 
----
+**بعدها م. صلاح يراجع ويقول "ابدأ"، وساعتها بس نفتح Unreal.**
+
+### 6.4 التجربة يوم بيوم (5 أيام شغل، 3 أشخاص بالتوازي)
+
+| اليوم | (A) فني Unreal / بلوبرنت | (B) إضاءة وخامات | (C) بيانات وواجهة |
+|---|---|---|---|
+| 1 | تنزيل بلجن Datasmith، المشروع، البلجنز، الاستيراد، Nanite، Collision، ارتفاع العين. **Checks 1–3، 8** | SunSky على جدة، Post Process، Exposure | مراجعة الجداول وتحويلها CSV، صور ونصوص المشروع للنقطة، تصميم القايمة |
+| 2 | `BPI_Interact` + `BP_Door` + تشغيل سكربت الأبواب. **Checks 4–5** | تشغيل سكربت الإضاءة، IES، درجات اللون، نهار وليل مبدئي | `WBP_Menu` (نقطتين تنقّل + نهار/ليل) |
+| 3 | `BP_RoomLights` + `BP_LightSwitch` + `BP_DayNight`. **Checks 6–7** | 4–6 خامات PBR أساسية + تفاصيل حياة | `BP_InfoPoint` + `WBP_InfoPanel`. **Checks 9–10** |
+| 4 | قياس الأداء (**Check 11**) وتخفيف لو محتاج، اختبار DirectLink (**Check 12**) | تظبيط نهائي للإضاءة على قد ما الجهاز يسمح | تغليف `.exe` وتجربته على جهاز تاني (**Check 13**) |
+| 5 | تقرير التقييم: جدول الـ 13 Check (ناجح / فاشل / يحتاج تحقق) + السبب | فيديو قصير 1–2 دقيقة | مراجعة مع م. صلاح وقرار نكمل ولا نعدّل الطريقة |
+
+لو الفريق شخصين، التجربة تبقى حوالي 7–8 أيام شغل. لو شخص واحد، حوالي أسبوعين.
 
 ## 7. الجدول الزمني والمخاطر
 
-### 7.1 الجدول الزمني (افتراض: شخص واحد متفرغ للتصوير المعماري، مع مراجعة منك أسبوعياً)
+### 7.1 الجدول الزمني (محسوب تاني: فريق 3 أشخاص بالتوازي + سكربتات)
 
-| المرحلة | الأسابيع | المخرجات |
-|---|---|---|
-| 0. تجهيز | أسبوع 1 | نظام تسمية معتمد، تثبيت البلجنز، جدول الخامات، جدول الإضاءة (من Revit/IES)، اختيار أصول Fab |
-| 1. التجربة الأولى | أسبوع 2–3 | البهو والاستقبال (القسم 6) + تقرير Checks |
-| **نقطة قرار** | نهاية أسبوع 3 | نكمل بنفس الطريقة ولا نعدّل |
-| 2. الدور الأرضي — الموديل والخامات | أسبوع 4–6 | الدور كامل في Unreal، كل الخامات PBR، الحديقة والشجر، الأثاث |
-| 3. الدور الأرضي — الإضاءة | أسبوع 6–8 | نهار وليل لكل الأماكن، الأتريوم، قاعة العرض، المعرض |
-| 4. الدور الأرضي — التفاعل | أسبوع 8–10 | كل الأبواب، كل الأوض بالنور، كل نقط المعلومات D-01…D-24، الشاشة بالفيديو، القايمة الكاملة |
-| 5. الانتقال للجهاز الجديد | أول ما يوصل (يُفضّل قبل أسبوع 8) | Hardware RT، MegaLights، تظبيط الجودة Epic |
-| 6. التسليم | أسبوع 11–12 | نسخة ويندوز، Pixel Streaming من المكتب، فيديو جولة، صور 360 |
-| 7. اختبار وتصحيح | أسبوع 13–14 | تجربة مع 3–5 أشخاص من برّه المكتب، تصليح الملاحظات |
-| 8. الأدوار اللي فوق + الملحق | بعد ما تصميمها يخلص | حوالي 1.5–2 أسبوع للدور الواحد لو مكرر، أكتر لو مختلف (تقدير — يحتاج تحقق بعد الدور الأرضي) |
+**الافتراضات:** (A) فني Unreal/بلوبرنت، (B) إضاءة وخامات، (C) بيانات وواجهة ومحتوى، وم. صلاح بيراجع. السكربتات بتبني الموديل وتعيد التصدير في دقايق، وسكربت Unreal (A.4) بيركّب الأبواب والإضاءة من الجداول في دقايق. الأسابيع = أسابيع شغل (أحد–خميس). **العد بيبدأ من يوم ما تقول "ابدأ"**، مش من النهارده.
 
-**إجمالي الدور الأرضي جاهز للعميل:** حوالي **14 أسبوع** (+ أسبوعين احتياطي = 16).
+| المرحلة | التوقيت | (A) | (B) | (C) |
+|---|---|---|---|---|
+| تجهيز الموديل والجداول | **قبل العد** (عندك) | — | — | — |
+| 1. التجربة الأولى | أسبوع 1 | (6.4) | (6.4) | (6.4) |
+| **نقطة قرار** | آخر أسبوع 1 | | | |
+| 2. الدور الأرضي كامل | أسبوع 2–4 | كل الأبواب بالسكربت + ظبط، الشاشة والفيديو، الأصوات، الأداء | كل الفراغات نهار وليل، الأتريوم، قاعة العرض، المعرض، الشجر | كل الخامات PBR، D-01…D-24 في `Projects.csv`، القايمة الكاملة والخريطة |
+| الجهاز الجديد | **لازم يوصل قبل أسبوع 3** | | الإضاءة النهائية عليه | |
+| 3. التسليم | أسبوع 5 | تغليف `.exe` + Pixel Streaming من المكتب | فيديو جولة وصور 360 | دليل استخدام صفحة واحدة للعميل |
+| 4. اختبار وتصحيح | أسبوع 6 | تصليح | تصليح | تجربة مع 3–5 أشخاص من برّه |
+| احتياطي | أسبوع 7 | | | |
+| 5. الأدوار اللي فوق + الملحق | لما تصميمها يخلص | 2–3 أيام للدور المكرر، وأسبوع تقريباً للدور المختلف (تقدير — **يحتاج تحقق** بعد الدور الأرضي) | | |
+
+**الإجمالي:** حوالي **6 أسابيع** للدور الأرضي جاهز للعميل، **+ أسبوع احتياطي = 7**. (بشخصين: حوالي 8–9 أسابيع. بشخص واحد: حوالي 11–12.)
+
+**إيه اللي السكربتات بتختصره وإيه اللي لأ:**
+
+| بيتختصر | مابيتختصرش |
+|---|---|
+| بناء الموديل وإعادة التصدير | جولات المراجعة معاك (كل جولة 1–2 يوم) |
+| تركيب 200 باب ومئات اللمبات | تظبيط الإضاءة والخامات بالعين — ده شغل فني |
+| تعديل زوايا وشدّات من الإكسل | أول تجميع للـ Shaders (ساعات، مرة واحدة على كل جهاز) |
+| نقل البيانات (D-01…D-24) | وصول الجهاز الجديد |
+| | ظبط Pixel Streaming على شبكة المكتب مع IT |
+| | تجربة ناس من برّه وتصليح ملاحظاتهم |
+
+**المسار الحرج:** موافقتك على الموديل ← التجربة ← **وصول الجهاز الجديد قبل أسبوع 3** ← الإضاءة النهائية ← التسليم. لو الجهاز اتأخر، كل أسبوع تأخير بيأخر التسليم أسبوع تقريباً، حتى لو الفريق أكبر.
 
 ### 7.2 المخاطر
 
 | # | الخطر | الاحتمال | التأثير | الحل |
 |---|---|---|---|---|
-| 1 | الجهاز الحالي (خصوصاً لو الـ Arc مدمج) مايقدرش يشغّل حتى الأرضي بشكل مقبول | عالي | متوسط | نشتغل بنطاق التجربة بس، Low/Medium، ونأجل الشكل النهائي للجهاز الجديد |
-| 2 | تأخر وصول الجهاز الجديد | متوسط | عالي | التفاعل والبلوبرنتس بتتعمل على الحالي؛ الإضاءة النهائية والتسليم مستنيين الجديد |
+| 1 | الكارت المدمج (Arc 140T) مايوصلش لـ 30 fps في التجربة (Check 11)، أو الرامات تخلص | عالي | متوسط | نطاق التجربة بس، Low/Medium، والبرامج التانية مقفولة. **Check 11 مش بيتسهّل**: لو فشل يتكتب فاشل وإنت تقرر |
+| 2 | تأخر وصول الجهاز الجديد بعد أسبوع 3 | متوسط | **عالي جداً** (بقى على المسار الحرج بعد ضغط الجدول) | نطلبه دلوقتي؛ التفاعل بيتعمل على الحالي؛ كل أسبوع تأخير = أسبوع على التسليم |
 | 3 | الأبواب نقطة لفها غلط (Group بدل Component، أو محاور غلط) | متوسط | متوسط | مراجعة في SketchUp قبل التصدير + Check 4 في التجربة |
 | 4 | DirectLink بيرجّع تعديلات اتعملت في Unreal | متوسط | متوسط | **ممنوع** نعدّل في عناصر Datasmith؛ كل حاجة في Blueprints منفصلة |
 | 5 | بلجن Datasmith لـ SketchUp مش متوافق مع نسخة SketchUp عندنا أو فيه مشاكل Sync | منخفض–متوسط | عالي | نتأكد من النسخة يوم 1؛ البديل: تصدير `.udatasmith` يدوي بدل DirectLink، وأسوأ حالة FBX |
@@ -627,24 +660,28 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 | 12 | الأدوار اللي فوق لسه متصممتش، والعميل يتوقع المبنى كله | متوسط | متوسط | نوضح من الأول إن النسخة الأولى = الأرضي + الواجهة الخارجية كاملة؛ والأدوار تتضاف تباعاً |
 | 13 | ترخيص الأصول (شجر، أثاث، أصوات) مش مسموح بيه في التوزيع | منخفض | عالي | جدول بكل أصل ومصدره وترخيصه |
 | 14 | 5.8 آخر إصدار رئيسي في UE5 حسب Epic، وUE6 جاي | منخفض | منخفض | نثبت المشروع على 5.8 لحد التسليم؛ ماننقلش لإصدار جديد في نص الشغل |
+| 15 | لخبطة بين أكواد الأبواب `D-xx` وأكواد المشاريع `D-01…D-24` | متوسط | متوسط | الأبواب من `Doors.csv` بس؛ الماكيتات مايتسموش `D-xx` (1.3) |
+| 16 | Datasmith بينقل اسم الـ Definition بدل اسم الـ Instance، أو بيضيف لاحقة (`D-12_2`) | متوسط | متوسط | السكربت بيطلع تقرير بالأبواب اللي مالقاهاش؛ ده جزء من Check 1 |
+| 17 | الجدول المضغوط بيعتمد على جولات مراجعة سريعة | متوسط | متوسط | ميعاد مراجعة ثابت مرتين في الأسبوع (مثلاً الاتنين والأربع) |
 
 ---
 
-## 8. محتاج منك (عشان نبدأ)
+## 8. اللي اتقرر واللي لسه مستني
 
-1. موافقة على **نظام التسمية** (1.3) أو تبعتلي التسمية الحالية.
-2. موافقة على **Checks التجربة الأولى** (6.2).
-3. نوع كارت **Intel Arc** بالظبط (منفصل ولا مدمج، والموديل).
-4. هل إيراد المكتب السنوي فوق ولا تحت مليون دولار؟ (علشان الترخيص.)
-5. نسخة SketchUp المستخدمة (2024 / 2025 / 2026).
-6. فيديو الـ Showreel اللي هيتعرض في القاعة، وصور ونصوص المشاريع D-01 لحد D-24.
+**اتقرر (2026-10-13):**
+- التسمية: `D-xx` للأبواب، `E-xx` للفراغات، الخامات زي ما هي.
+- الـ 13 Check بتوع التجربة: معتمدين ومقفولين.
+- الجهاز الحالي: Core Ultra 7 255H + Arc 140T مدمج (لحد 16 جيجا مشتركة).
+- SketchUp 2023.
+- **التجربة في Unreal مابتبدأش غير لما م. صلاح يقول.**
 
----
----
-
-# Appendix — Technical Reference (English)
-
-> All paths and settings target **Unreal Engine 5.8**, Blueprint-only project. Verify any value marked *(verify)* against the official docs for 5.8 before production.
+**لسه محتاج منك:**
+1. الإيراد السنوي: **تحت** ولا **فوق** مليون دولار؟ (الرد جه فيه الاختيارين.)
+2. حجم الفريق اللي هيشتغل على Unreal فعلاً (الجدول محسوب على 3).
+3. تسمية الماكيتات (مش `D-xx`) والأبواب بضلفتين (`D-12-L` / `D-12-R`؟).
+4. أرقام `D-xx` و`E-xx` مش بتتكرر في المبنى كله، ولا كل دور ليه ترقيمه؟
+5. ميعاد وصول الجهاز الجديد.
+6. فيديو الـ Showreel، وصور ونصوص المشاريع D-01 لحد D-24.
 
 ## A.1 Project setup
 
@@ -659,7 +696,7 @@ Twinmotion 2026.1 ممتاز للقطات سريعة وفيديو للعميل �
 
 ### Project Settings → Rendering
 
-| Setting | Current PC (Intel Arc) | New PC (RTX 5080) |
+| Setting | Current PC (Arc 140T iGPU) | New PC (RTX 5080) |
 |---|---|---|
 | Dynamic Global Illumination Method | Lumen | Lumen |
 | Reflection Method | Lumen | Lumen |
@@ -698,7 +735,17 @@ r.VSync 0
 - Purge unused; meters; shared origin (0,0,0) across per-floor files.
 - Scenes for key viewpoints → become CineCameraActors → reusable as teleport anchors.
 
-Naming: `DR_` swing door leaf, `DS_` sliding leaf, `LT_` light fixture, `SW_` wall switch, `EX_` exhibit, `SCR_` screen. Pattern: `<TYPE>_<FLOOR>_<ROOM>[_<KIND>]_<NN>`.
+Naming (approved 2026-10-13): door leaves `D-xx` (double: `D-xx-L` / `D-xx-R`, pending confirmation), spaces `E-xx`, materials unchanged, light fixtures keep existing fixed names. Names must be set on the **component instance** (Entity Info → Instance), not only the definition.
+Non-name attributes live in CSV schedules under `<Project>/SMHQ_Data/`:
+
+| File | Columns |
+|---|---|
+| `Doors.csv` | `Code,Space,Type,OpenAngle,AutoOpen,Locked` (Type = Swing \| Sliding; booleans Yes/No) |
+| `Lights.csv` | `Name,Space,Kind,Lumens,Kelvin,IES` (Kind = DOWN \| SPOT \| PEND \| WALL \| LINE \| COVE; IES = asset path or empty) |
+| `Spaces.csv` | `Code,NameAR,NameEN,Floor,Teleport` |
+| `Projects.csv` | `Code,Title,Description,Images,Video` → imported to `DT_Projects`, row key `PRJ_<Code>` |
+
+Portfolio codes `D-01…D-24` collide with door codes: doors are identified **only** via `Doors.csv`, never by prefix; exhibit models must not be named `D-xx`.
 
 ## A.3 Datasmith import options
 
@@ -714,89 +761,105 @@ Naming: `DR_` swing door leaf, `DS_` sliding leaf, `LT_` light fixture, `SW_` wa
 
 Rule: **never modify Datasmith-owned actors** beyond visibility; all interactivity lives in separate Blueprint actors referencing the imported meshes.
 
-## A.4 Editor Python: auto-build doors and lights from names
+## A.4 Editor Python: build doors and lights from the CSV schedules
 
-Enable **Python Editor Script Plugin** + **Editor Scripting Utilities**. Run from *Tools → Execute Python Script* (or the Output Log in Python mode). Test on the pilot level first; save before running.
+Enable **Python Editor Script Plugin** + **Editor Scripting Utilities**. Run from *Tools → Execute Python Script*. Save the level first; the whole run is one undo transaction. Validate on the pilot level before any wider use.
 
 ```python
-# smhq_autobuild.py — Unreal Engine 5.8 editor script (run in editor only)
+# smhq_autobuild.py — Unreal Engine 5.8 editor-only script
+import csv, os, re
 import unreal
 
+DATA_DIR = os.path.join(unreal.Paths.project_dir(), "SMHQ_Data")
+DOOR_BP  = unreal.EditorAssetLibrary.load_blueprint_class("/Game/SMHQ/Blueprints/BP_Door")
 actor_sub = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
 
-DOOR_BP = unreal.EditorAssetLibrary.load_blueprint_class("/Game/SMHQ/Blueprints/BP_Door")
-
-# Lighting defaults per fixture kind: (light class, lumens, kelvin, cone/rect)
-LIGHT_KIND = {
-    "DOWN": (unreal.SpotLight,  900,  3000),
-    "SPOT": (unreal.SpotLight,  600,  3000),
-    "PEND": (unreal.PointLight, 1200, 2700),
-    "WALL": (unreal.PointLight, 500,  3000),
-    "LINE": (unreal.RectLight,  1500, 4000),
-    "COVE": (unreal.RectLight,  800,  3000),
+LIGHT_CLASS = {
+    "DOWN": unreal.SpotLight, "SPOT": unreal.SpotLight,
+    "PEND": unreal.PointLight, "WALL": unreal.PointLight,
+    "LINE": unreal.RectLight,  "COVE": unreal.RectLight,
 }
 
-def room_tag(label):
-    # LT_GF_LOBBY_DOWN_03 -> GF_LOBBY
-    parts = label.split("_")
-    return "_".join(parts[1:3]) if len(parts) >= 4 else None
+def load_csv(name, key):
+    with open(os.path.join(DATA_DIR, name), newline="", encoding="utf-8-sig") as f:
+        return {row[key].strip(): row for row in csv.DictReader(f)}
 
-def static_mesh_of(actor):
+def yes(v):
+    return str(v).strip().lower() in ("yes", "y", "true", "1")
+
+def base_label(label):
+    # Datasmith may suffix duplicates ("D-12_2"); strip a trailing _<digits>
+    return re.sub(r"_\d+$", "", label)
+
+def mesh_of(actor):
     comp = actor.get_component_by_class(unreal.StaticMeshComponent)
     return comp.static_mesh if comp else None
 
-made_doors, made_lights = 0, 0
+doors  = load_csv("Doors.csv", "Code")
+lights = load_csv("Lights.csv", "Name")
+found_doors, found_lights = set(), set()
 
-with unreal.ScopedEditorTransaction("SMHQ autobuild") as _:
+with unreal.ScopedEditorTransaction("SMHQ autobuild"):
     for actor in actor_sub.get_all_level_actors():
-        label = actor.get_actor_label()
+        if not isinstance(actor, unreal.StaticMeshActor):
+            continue
+        label = base_label(actor.get_actor_label())
 
-        # ---- Doors: replace Datasmith leaf with BP_Door at the same transform
-        if (label.startswith("DR_") or label.startswith("DS_")) and isinstance(actor, unreal.StaticMeshActor):
-            mesh = static_mesh_of(actor)
+        # ---- Doors (only codes listed in Doors.csv — never by "D-" prefix)
+        if label in doors:
+            row, mesh = doors[label], mesh_of(actor)
             if not mesh:
                 continue
             door = actor_sub.spawn_actor_from_class(DOOR_BP, actor.get_actor_location(), actor.get_actor_rotation())
-            door.set_actor_label("BP_" + label)
+            door.set_actor_label("BP_Door_" + label)
             door.set_actor_scale3d(actor.get_actor_scale3d())
-            door_mesh = door.get_editor_property("DoorMesh")  # component variable in BP_Door
-            door_mesh.set_static_mesh(mesh)
-            door.set_editor_property("IsSliding", label.startswith("DS_"))
-            # hide the source leaf instead of deleting (DirectLink-safe)
-            actor.set_actor_hidden_in_game(True)
+            door.get_editor_property("DoorMesh").set_static_mesh(mesh)
+            door.set_editor_property("IsSliding", row["Type"].strip().lower() == "sliding")
+            door.set_editor_property("OpenAngle", float(row["OpenAngle"] or 90))
+            door.set_editor_property("AutoOpen", yes(row["AutoOpen"]))
+            door.set_editor_property("IsLocked", yes(row["Locked"]))
+            door.tags = [unreal.Name(row["Space"].strip())]
+            actor.set_actor_hidden_in_game(True)          # hide source leaf, keep it (DirectLink-safe)
             actor.set_is_temporarily_hidden_in_editor(True)
-            made_doors += 1
+            found_doors.add(label)
 
-        # ---- Lights: spawn a light under each LT_ fixture, tagged with its room
-        elif label.startswith("LT_"):
-            parts = label.split("_")
-            kind = parts[3] if len(parts) >= 5 else "DOWN"
-            cls, lumens, kelvin = LIGHT_KIND.get(kind, LIGHT_KIND["DOWN"])
+        # ---- Lights (fixture names from Lights.csv)
+        elif label in lights:
+            row = lights[label]
+            cls = LIGHT_CLASS.get(row["Kind"].strip().upper(), unreal.SpotLight)
             origin, extent = actor.get_actor_bounds(False)
-            loc = unreal.Vector(origin.x, origin.y, origin.z - extent.z - 2.0)  # 2 cm below fixture
-            rot = unreal.Rotator(0.0, -90.0, 0.0) if cls is not unreal.PointLight else unreal.Rotator()  # pitch -90 = pointing down
+            loc = unreal.Vector(origin.x, origin.y, origin.z - extent.z - 2.0)   # 2 cm below fixture
+            # unreal.Rotator(roll, pitch, yaw): pitch -90 points spot/rect lights down
+            rot = unreal.Rotator(0.0, -90.0, 0.0) if cls is not unreal.PointLight else unreal.Rotator()
             light = actor_sub.spawn_actor_from_class(cls, loc, rot)
             light.set_actor_label("L_" + label)
             lc = light.light_component
             lc.set_editor_property("intensity_units", unreal.LightUnits.LUMENS)
-            lc.set_editor_property("intensity", float(lumens))
+            lc.set_editor_property("intensity", float(row["Lumens"] or 800))
             lc.set_editor_property("use_temperature", True)
-            lc.set_editor_property("temperature", float(kelvin))
-            lc.set_editor_property("mobility", unreal.ComponentMobility.MOVABLE)
-            tag = room_tag(label)
-            if tag:
-                light.tags = [unreal.Name(tag)]
+            lc.set_editor_property("temperature", float(row["Kelvin"] or 3000))
+            if row.get("IES"):
+                ies = unreal.EditorAssetLibrary.load_asset(row["IES"].strip())
+                if ies:
+                    lc.set_editor_property("ies_texture", ies)
+                    lc.set_editor_property("use_ies_brightness", True)
+            light.tags = [unreal.Name(row["Space"].strip())]      # BP_RoomLights collects by Space tag
             light.attach_to_actor(actor, "", unreal.AttachmentRule.KEEP_WORLD,
                                   unreal.AttachmentRule.KEEP_WORLD, unreal.AttachmentRule.KEEP_WORLD, False)
-            made_lights += 1
+            found_lights.add(label)
 
-unreal.log(f"SMHQ autobuild: {made_doors} doors, {made_lights} lights")
+# ---- QA report (feeds Check 1)
+unreal.log(f"SMHQ autobuild: {len(found_doors)}/{len(doors)} doors, {len(found_lights)}/{len(lights)} lights")
+for code in sorted(set(doors) - found_doors):
+    unreal.log_warning(f"Door in Doors.csv not found in level: {code}")
+for name in sorted(set(lights) - found_lights):
+    unreal.log_warning(f"Light in Lights.csv not found in level: {name}")
 ```
 
 Notes:
-- `unreal.Rotator(roll, pitch, yaw)` argument order in Python — check that spot lights point down in the pilot; flip sign if needed.
-- Lumens/kelvin defaults are placeholders; override from the lighting schedule (CSV) and assign IES profiles (`ies_texture`, `use_ies_brightness`) per fixture family.
-- If DirectLink re-imports re-show hidden leaves, rerun only the hide pass.
+- If Datasmith imports the **definition** name instead of the instance name, the QA report will list every door as missing — fix naming in SketchUp, do not rename in Unreal.
+- Re-running creates duplicates: delete `BP_Door_*` and `L_*` actors first (or extend the script to skip existing labels).
+- Lumens/kelvin come from `Lights.csv`; IES column takes an imported IES asset path (e.g. `/Game/SMHQ/IES/Brand_Model`).
 
 ## A.5 Blueprint reference (node-level)
 
@@ -900,10 +963,12 @@ Docs: <https://dev.epicgames.com/documentation/en-us/unreal-engine/pixel-streami
 
 | Target | Resolution | Scalability | FPS |
 |---|---|---|---|
-| Dev on current PC (pilot only) | 1080p, SP 50–67% | Low/Medium (Lumen Lite) | ≥ 30 |
+| Dev on current PC (Arc 140T iGPU, pilot only) | 1080p, SP 50% | Low (build) / Medium (Check 11) | ≥ 30 at Medium = Check 11 (locked) |
 | Client .exe default | 1080p | Medium | ≥ 30 |
 | New PC / showroom | 1440p–4K | Epic + HWRT + MegaLights | ≥ 60 (1440p) |
 | Pixel Streaming | 1080p | High | 30–60 |
+
+Low-RAM shader compile (current laptop): if the editor runs out of memory while compiling shaders, reduce parallel shader workers in `Config/DefaultEngine.ini` → `[DevOptions.Shaders]` (e.g. `NumUnusedShaderCompilingThreads=6`) *(verify key in 5.8)*.
 
 Profiling: `stat unit`, `stat gpu`, `ProfileGPU` (Ctrl+Shift+,), Unreal Insights. Typical fixes: reduce shadow-casting lights, lower Lumen Final Gather, ensure Nanite on dense meshes, cap texture sizes at 2K for non-hero assets, stream floors.
 
