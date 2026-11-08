@@ -6,13 +6,13 @@
 <style>
 /* Layout: a single letterpress card, centred on a sage linen ground; geometric star border, calligraphic names as the hero. Deliberately one look in both themes. */
 :root {
-  --ground: #2f3d36;      /* deep sage */
-  --ground-2: #3a4a42;
-  --paper: #f7f2e7;       /* ivory card stock */
-  --ink: #2b2a26;         /* warm black ink */
-  --ink-soft: #5d5a50;
-  --gold: #a8803c;        /* bronze foil */
-  --gold-light: #d1b06b;
+  --ground: #e9e1d2;      /* warm beige */
+  --ground-2: #f3ede2;
+  --paper: #ffffff;       /* white card stock */
+  --ink: #2d2a24;         /* warm black ink */
+  --ink-soft: #77705f;
+  --gold: #b08d4a;        /* gold foil */
+  --gold-light: #d8c294;
   --f-names: "Aref Ruqaa", "Amiri", "Traditional Arabic", serif;
   --f-body: "Amiri", "Traditional Arabic", "Times New Roman", serif;
   --f-label: "Reem Kufi", "Segoe UI", Tahoma, sans-serif;
@@ -39,7 +39,7 @@ body {
   max-width: 520px;
   background: var(--paper);
   padding: 22px;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,.55), 0 2px 0 rgba(255,255,255,.4) inset;
+  box-shadow: 0 30px 60px -24px rgba(80,60,20,.35), 0 2px 0 rgba(255,255,255,.4) inset;
   animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both;
 }
 @keyframes rise { from { transform: translateY(14px); opacity: .6; } to { transform: none; opacity: 1; } }
@@ -113,8 +113,15 @@ body {
 .names .n {
   font-family: var(--f-names);
   font-weight: 700;
-  font-size: clamp(3rem, 13vw, 4.4rem);
+  font-size: clamp(2.5rem, 11vw, 3.6rem);
   color: var(--ink);
+}
+.names .t {
+  font-family: var(--f-label);
+  font-size: .8rem;
+  letter-spacing: .06em;
+  color: var(--gold);
+  margin-bottom: -4px;
 }
 .names .amp {
   font-family: var(--f-names);
@@ -180,9 +187,8 @@ body {
   margin: 18px auto 0;
   font-family: var(--f-label);
   font-size: .75rem;
-  color: var(--gold-light);
+  color: var(--ink-soft);
   text-align: center;
-  opacity: .85;
 }
 .wrap { width: 100%; max-width: 520px; }
 
@@ -221,9 +227,11 @@ body {
       <p class="intro">يتشرّف أهل العروسين بدعوتكم لحضور حفل زفاف نجليهما</p>
 
       <h1 class="names">
-        <span class="n">محمود</span>
+        <span class="t">المهندس</span>
+        <span class="n">محمود صلاح</span>
         <span class="amp">و</span>
-        <span class="n">لمياء</span>
+        <span class="t">الدكتورة</span>
+        <span class="n">لمياء محمد</span>
       </h1>
 
       <div class="rule" aria-hidden="true">
@@ -231,15 +239,15 @@ body {
       </div>
 
       <div class="details">
-        <div><span class="label">اليوم</span><span class="value">الخميس</span></div>
-        <div><span class="label">التاريخ</span><span class="value">١٠ / ١٢ / ٢٠٢٦<small>١٩ جمادى الآخرة ١٤٤٨هـ</small></span></div>
+        <div><span class="label">اليوم</span><span class="value">السبت</span></div>
+        <div><span class="label">التاريخ</span><span class="value">١٢ ديسمبر<small>٢٠٢٦</small></span></div>
         <div><span class="label">الساعة</span><span class="value">٨:٠٠ مساءً</span></div>
       </div>
 
       <p class="venue">
         <span class="label">المكان</span>
-        <span class="place">قاعة الياسمين للاحتفالات</span>
-        <span class="city">الرياض</span>
+        <span class="place">قاعة لوسيندا</span>
+        <span class="city">فاميلي بارك · التجمع الخامس</span>
       </p>
 
       <p class="closing">بحضوركم تكتمل فرحتنا، ودعواتكم لهما بالتوفيق والسعادة</p>
@@ -247,5 +255,5 @@ body {
       <span class="hosts">جزاكم الله خيراً · نرجو عدم اصطحاب الأطفال</span>
     </div>
   </article>
-  <p class="note">التاريخ والوقت والقاعة بيانات مثال — أرسلها لي وأحدّثها فوراً</p>
+  <p class="note">الساعة ٨ مساءً مؤقتة، أرسل الوقت الصحيح لأحدّثه</p>
 </div>
