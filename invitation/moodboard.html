@@ -1,0 +1,141 @@
+<title>لوحة ألوان محمود ولمياء</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;600&display=swap">
+<style>
+/* Layout: a header, then a grid of numbered palette boards; each board = a mini invitation in its palette + swatch strip + mood words. */
+:root {
+  --bg: #eeebe4;
+  --surface: #faf8f3;
+  --fg: #26241f;
+  --muted: #6b675d;
+  --line: #d9d3c6;
+  --f-display: "Aref Ruqaa", "Amiri", serif;
+  --f-body: "Amiri", "Traditional Arabic", serif;
+  --f-label: "Reem Kufi", "Segoe UI", Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1c1b18; --surface: #262420; --fg: #eeeae0; --muted: #a8a294; --line: #3a3731; color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #1c1b18; --surface: #262420; --fg: #eeeae0; --muted: #a8a294; --line: #3a3731; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--f-body);
+  padding-block: 36px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.page { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+header { display: flex; flex-direction: column; gap: 6px; }
+header .eyebrow { font-family: var(--f-label); font-size: .8rem; letter-spacing: .06em; color: var(--muted); }
+header h1 { font-family: var(--f-display); font-size: clamp(2rem, 6vw, 3rem); margin: 0; line-height: 1.3; }
+header p { margin: 0; font-size: 1.1rem; color: var(--muted); max-width: 60ch; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+@media (max-width: 380px) { .grid { grid-template-columns: 1fr; } }
+
+.board {
+  background: var(--surface); border: 1px solid var(--line);
+  display: flex; flex-direction: column; min-width: 0;
+}
+.stage {
+  background: var(--g); padding: 26px 22px; display: grid; place-items: center;
+  position: relative;
+}
+.num {
+  position: absolute; top: 12px; right: 14px;
+  font-family: var(--f-label); font-weight: 600; font-size: .85rem;
+  color: var(--a); background: color-mix(in srgb, var(--g) 70%, black);
+  border: 1px solid var(--a); padding: 2px 10px;
+}
+.mini {
+  width: 100%; max-width: 230px; background: var(--p); padding: 8px;
+  box-shadow: 0 16px 30px -14px rgba(0,0,0,.5);
+}
+.mini .in {
+  border: 1px solid var(--a); outline: 1px solid var(--a); outline-offset: -5px;
+  padding: 22px 12px 18px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.mini .bs { font-size: .7rem; color: var(--s); }
+.mini .star { width: 16px; height: 16px; color: var(--a); }
+.mini .nm { font-family: var(--f-display); font-size: 1.9rem; line-height: 1.15; color: var(--i); }
+.mini .amp { font-family: var(--f-display); font-size: 1.1rem; color: var(--a); line-height: .8; }
+.mini .dt {
+  font-family: var(--f-label); font-size: .62rem; color: var(--i);
+  border-block: 1px solid var(--a); padding: 4px 0; width: 100%; letter-spacing: .03em;
+}
+
+.info { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 12px; }
+.info h2 { margin: 0; font-size: 1.3rem; font-weight: 700; }
+.info .mood { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.7; }
+.sw { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.chip { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.chip span.c { height: 38px; border: 1px solid var(--line); background: var(--c); }
+.chip b { font-family: var(--f-label); font-weight: 400; font-size: .7rem; color: var(--muted); }
+.chip code { font-family: ui-monospace, Menlo, monospace; font-size: .68rem; color: var(--fg); direction: ltr; text-align: right; }
+
+footer { color: var(--muted); font-family: var(--f-label); font-size: .85rem; }
+</style>
+
+<div class="page" dir="rtl" lang="ar">
+  <header>
+    <span class="eyebrow">بطاقة زفاف محمود ولمياء · لوحة اختيار الألوان</span>
+    <h1>اختر لون الكرت</h1>
+    <p>ثماني لوحات، كل واحدة مطبّقة على نسخة مصغّرة من الكرت. اختر رقم اللوحة التي تعجبك، أو اخلط بين لوحتين.</p>
+  </header>
+  <section class="grid" id="grid"></section>
+  <footer>الألوان على الشاشة تختلف قليلاً عن الطباعة. الذهبي والفضي يمكن طباعتهما فويل (رقائق معدنية) بدل الحبر.</footer>
+</div>
+
+<script>
+const palettes = [
+  { name: "أخضر مريمي وذهبي", mood: "هادئ وراقٍ، طابع حدائق ومساء صيفي. اللوحة الحالية للكرت.",
+    g:"#2f3d36", p:"#f7f2e7", i:"#2b2a26", a:"#a8803c", s:"#5d5a50",
+    names:["الخلفية","الورق","الحبر","الذهبي"] },
+  { name: "عنابي ملكي", mood: "فخم ودافئ، يناسب حفلات المساء والقاعات الكبيرة.",
+    g:"#4a1622", p:"#f6eee4", i:"#2c1a1d", a:"#b8894a", s:"#6e5658",
+    names:["العنابي","الورق","الحبر","النحاسي"] },
+  { name: "كحلي ليلي وشامبين", mood: "رسمي وأنيق، كأنه سماء ليلة الفرح.",
+    g:"#1b2440", p:"#f4f2ec", i:"#1c2033", a:"#c2a46b", s:"#5a5f72",
+    names:["الكحلي","الورق","الحبر","الشامبين"] },
+  { name: "وردي بودري وروز جولد", mood: "ناعم ورومانسي، خفيف على العين.",
+    g:"#e7cfca", p:"#fffaf7", i:"#4a3236", a:"#b5776a", s:"#86686a",
+    names:["البودري","الورق","الحبر","الروز جولد"] },
+  { name: "أبيض وذهبي كلاسيك", mood: "تقليدي وبسيط، لا يخطئ أبداً.",
+    g:"#e9e1d2", p:"#ffffff", i:"#2d2a24", a:"#b08d4a", s:"#77705f",
+    names:["البيج","الأبيض","الحبر","الذهبي"] },
+  { name: "فيروزي وذهبي", mood: "مستوحى من البلاط والزخارف القديمة، حيوي ومميز.",
+    g:"#1f4f52", p:"#f5f1e8", i:"#1f2a2a", a:"#c19a52", s:"#566463",
+    names:["الفيروزي","الورق","الحبر","الذهبي"] },
+  { name: "ليلكي وفضي", mood: "حالم وهادئ، مختلف عن المعتاد.",
+    g:"#5b4a6b", p:"#f7f4f8", i:"#2e2636", a:"#9c93a8", s:"#6d6475",
+    names:["الليلكي","الورق","الحبر","الفضي"] },
+  { name: "زيتوني ورملي", mood: "طبيعي وترابي، يناسب حفلاً في مزرعة أو استراحة.",
+    g:"#4d5234", p:"#f3eedf", i:"#2f3022", a:"#b39a62", s:"#6a6852",
+    names:["الزيتوني","الورق","الحبر","الرملي"] },
+];
+const ar = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+const star = '<svg class="star" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="22" height="22"/><rect x="9" y="9" width="22" height="22" transform="rotate(45 20 20)"/></g></svg>';
+document.getElementById("grid").innerHTML = palettes.map((p, k) => {
+  const cols = [p.g, p.p, p.i, p.a];
+  return `<article class="board" style="--g:${p.g};--p:${p.p};--i:${p.i};--a:${p.a};--s:${p.s}">
+    <div class="stage">
+      <span class="num">رقم ${ar(k + 1)}</span>
+      <div class="mini"><div class="in">
+        <span class="bs">بسم الله الرحمن الرحيم</span>${star}
+        <span class="nm">محمود</span><span class="amp">و</span><span class="nm">لمياء</span>
+        <span class="dt">الخميس · ٨:٠٠ مساءً</span>
+      </div></div>
+    </div>
+    <div class="info">
+      <h2>${ar(k + 1)}. ${p.name}</h2>
+      <p class="mood">${p.mood}</p>
+      <div class="sw">${cols.map((c, j) => `<div class="chip"><span class="c" style="--c:${c}"></span><b>${p.names[j]}</b><code>${c}</code></div>`).join("")}</div>
+    </div>
+  </article>`;
+}).join("");
+</script>
