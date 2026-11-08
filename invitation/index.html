@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mahmoud & Lamiaa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Great+Vibes&family=Italiana&family=Reem+Kufi:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#efe9e1; --ink:#2a2622; --muted:#7a7068;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--page);color:var(--ink);font-family:"Cormorant Garamond",serif;padding:48px 16px 80px}
+header{text-align:center;margin-bottom:40px}
+header h1{font-family:"Cinzel",serif;font-weight:400;letter-spacing:.3em;font-size:clamp(18px,3vw,26px)}
+header p{font-family:"Amiri",serif;color:var(--muted);margin-top:8px;font-size:18px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px 40px;max-width:1040px;margin:0 auto}
+figure{display:flex;flex-direction:column;align-items:center;gap:14px}
+figcaption{font-family:"Cinzel",serif;letter-spacing:.25em;font-size:13px;color:var(--muted)}
+figcaption span{display:block;font-family:"Amiri",serif;letter-spacing:0;font-size:16px;text-align:center}
+
+/* ===== shared card ===== */
+.card{position:relative;width:100%;max-width:500px;aspect-ratio:5/7;container-type:inline-size;overflow:hidden;
+  box-shadow:0 2px 4px rgba(0,0,0,.08),0 18px 40px -12px rgba(60,40,20,.35)}
+.card svg.layer{position:absolute;inset:0;width:100%;height:100%}
+.ltr{direction:ltr}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+/* ===== 1. SAKURA INK ===== */
+.sakura{background:#f6f0e4}
+.sakura .center{padding-top:42cqw}
+.sakura .kicker{font-family:"Cinzel",serif;font-size:2.6cqw;letter-spacing:.55em;color:#3b3530;margin-inline-start:.55em}
+.sakura .rule{width:10cqw;height:1px;background:#3b3530;opacity:.55;margin:4.2cqw 0}
+.sakura .name{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:9.4cqw;letter-spacing:.14em;line-height:1;color:#1f1b18;margin-inline-start:.14em}
+.sakura .amp{font-family:"Great Vibes",cursive;font-size:10cqw;color:#a3201c;line-height:1;margin:1.4cqw 0 .6cqw}
+.sakura .ar{font-family:"Amiri",serif;font-size:4.6cqw;color:#a3201c;margin-top:3.2cqw;direction:rtl}
+.sakura .date{font-family:"Cinzel",serif;font-size:2.9cqw;letter-spacing:.32em;line-height:2;color:#2a2622;margin-inline-start:.32em}
+.sakura .venue{font-family:"Cinzel",serif;font-size:3.1cqw;letter-spacing:.3em;line-height:1.9;color:#2a2622;margin-inline-start:.3em}
+.sakura .venue small{display:block;font-family:"Cormorant Garamond",serif;font-style:italic;letter-spacing:.12em;font-size:3cqw;color:#6c625a}
+
+/* ===== 2. EMERALD ARABESQUE ===== */
+.emerald{background:radial-gradient(120% 90% at 50% 40%,#0f5a48 0%,#0a3e33 55%,#062a23 100%)}
+.gold{background:linear-gradient(170deg,#f6e3a8 0%,#d4ad5b 35%,#a67c2e 60%,#f1d999 85%,#b8913f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.emerald .center{padding-top:30cqw}
+.emerald .bism{font-family:"Amiri",serif;font-size:3.6cqw;color:#e6cf8f;opacity:.9}
+.emerald .invite{font-family:"Amiri",serif;font-size:3.4cqw;color:#e9e2cf;line-height:1.8;margin-top:3cqw;max-width:62cqw}
+.emerald .names-ar{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:15cqw;line-height:1.25;margin-top:3cqw}
+.emerald .names-en{font-family:"Cinzel",serif;font-size:3.2cqw;letter-spacing:.45em;color:#e6cf8f;margin-top:.5cqw;margin-inline-start:.45em}
+.emerald .orn{width:34cqw;margin:4.5cqw 0 3.5cqw}
+.emerald .row{display:flex;gap:5cqw;align-items:center;font-family:"Amiri",serif;color:#f1ead6}
+.emerald .row .big{font-family:"Cinzel",serif;font-size:9cqw;line-height:1}
+.emerald .row .side{font-size:3.4cqw;line-height:1.5;padding:1cqw 0;border-top:1px solid rgba(214,180,100,.6);border-bottom:1px solid rgba(214,180,100,.6);min-width:22cqw}
+.emerald .venue{font-family:"Amiri",serif;font-size:4.4cqw;color:#f1ead6;margin-top:6cqw}
+.emerald .venue-en{font-family:"Cinzel",serif;font-size:2.4cqw;letter-spacing:.4em;color:#cdb47a;margin-top:1.2cqw}
+
+/* ===== 3. MIDNIGHT ARCH ===== */
+.midnight{background:linear-gradient(180deg,#0e1730 0%,#17244a 55%,#1d2b55 100%)}
+.midnight .center{padding-top:53cqw}
+.midnight .kicker{font-family:"Italiana",serif;font-size:2.3cqw;letter-spacing:.4em;color:#cdb98a;margin-inline-start:.5em}
+.midnight .name{font-family:"Great Vibes",cursive;font-size:12cqw;line-height:1.05;color:#f3e7c6}
+.midnight .and{font-family:"Italiana",serif;font-size:4cqw;color:#cdb98a;letter-spacing:.3em;margin:-.5cqw 0 -.5cqw}
+.midnight .ar{font-family:"Reem Kufi",sans-serif;font-size:3.6cqw;color:#cdb98a;margin-top:1.6cqw;letter-spacing:.05em}
+.midnight .line{width:52cqw;height:1px;background:linear-gradient(90deg,transparent,#cdb98a,transparent);margin:3.2cqw 0}
+.midnight .date{display:flex;align-items:center;gap:3.5cqw;font-family:"Italiana",serif;color:#f3e7c6}
+.midnight .date .d{font-size:10cqw;line-height:1}
+.midnight .date .m{font-size:2.8cqw;letter-spacing:.35em;line-height:1.9;text-align:left}
+.midnight .venue{font-family:"Italiana",serif;font-size:3.6cqw;letter-spacing:.35em;color:#f3e7c6;margin-inline-start:.35em}
+.midnight .venue small{display:block;font-size:2.5cqw;letter-spacing:.45em;color:#9fa9c8;margin-top:1.3cqw}
+
+/* ===== 4. TERRACOTTA OLIVE ===== */
+.terra{background:#efe3d3}
+.terra .center{padding-top:30cqw}
+.terra .kicker{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:4cqw;color:#f6ead9}
+.terra .name{font-family:"Italiana",serif;font-size:11.5cqw;letter-spacing:.06em;line-height:1.05;color:#fff6ea}
+.terra .amp{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:8cqw;color:#f2cfa5;line-height:1}
+.terra .ar{font-family:"Aref Ruqaa",serif;font-size:5.2cqw;color:#f6ead9;margin-top:2cqw}
+.terra .sep{width:8cqw;height:1px;background:#f6ead9;opacity:.7;margin:4.5cqw 0}
+.terra .date{font-family:"Cinzel",serif;font-size:3cqw;letter-spacing:.3em;line-height:2;color:#fff6ea;margin-inline-start:.3em}
+.terra .venue{position:absolute;bottom:13cqw;left:0;right:0;font-family:"Cinzel",serif;font-size:3.4cqw;letter-spacing:.35em;color:#7b3a22;margin-inline-start:.35em}
+.terra .venue small{display:block;font-family:"Cormorant Garamond",serif;font-style:italic;letter-spacing:.1em;font-size:3.2cqw;color:#8a6a55;margin-top:.6cqw}
+</style>
+</head>
+<body>
+<header>
+  <h1>MAHMOUD &amp; LAMIAA</h1>
+  <p>أربعة أساليب لدعوة الفرح — قاعة لوسيندا</p>
+</header>
+
+<main class="gallery">
+
+<!-- ================= 1. SAKURA INK ================= -->
+<figure>
+<div class="card sakura" id="card-sakura">
+  <svg class="layer" viewBox="0 0 500 700" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <filter id="paper" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="4"/>
+        <feColorMatrix values="0 0 0 0 .45  0 0 0 0 .38  0 0 0 0 .3  0 0 0 .09 0"/>
+        <feComposite in2="SourceGraphic" operator="in"/>
+      </filter>
+      <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="2"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+      <filter id="sunTex"><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="9"/>
+        <feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.3 1"/><feComposite in="SourceGraphic" operator="in"/></filter>
+      <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+      <linearGradient id="mtn1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8d8780" stop-opacity=".55"/><stop offset="1" stop-color="#f6f0e4" stop-opacity="0"/></linearGradient>
+      <linearGradient id="mtn2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5e5852" stop-opacity=".55"/><stop offset="1" stop-color="#f6f0e4" stop-opacity="0"/></linearGradient>
+      <g id="blossom">
+        <g fill="#fffaf3" stroke="#6b5f57" stroke-width=".7">
+          <ellipse cx="0" cy="-6" rx="4.2" ry="6"/>
+          <ellipse cx="0" cy="-6" rx="4.2" ry="6" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-6" rx="4.2" ry="6" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-6" rx="4.2" ry="6" transform="rotate(216)"/>
+          <ellipse cx="0" cy="-6" rx="4.2" ry="6" transform="rotate(288)"/>
+        </g>
+        <circle r="2.4" fill="#e7b3ad"/>
+        <g stroke="#a3201c" stroke-width=".7"><path d="M0 0L0 -4M0 0L3.6 -1.3M0 0L2.3 3.2M0 0L-2.3 3.2M0 0L-3.6 -1.3"/></g>
+        <g fill="#a3201c"><circle cy="-4" r=".8"/><circle cx="3.6" cy="-1.3" r=".8"/><circle cx="2.3" cy="3.2" r=".8"/><circle cx="-2.3" cy="3.2" r=".8"/><circle cx="-3.6" cy="-1.3" r=".8"/></g>
+      </g>
+      <g id="bud"><ellipse rx="2.6" ry="3.8" fill="#d9928a" stroke="#8a3a33" stroke-width=".5"/></g>
+    </defs>
+    <rect width="500" height="700" fill="#f6f0e4"/>
+    <rect width="500" height="700" filter="url(#paper)"/>
+    <!-- sun -->
+    <circle cx="368" cy="112" r="58" fill="#b3271f"/><circle cx="368" cy="112" r="58" fill="#f6f0e4" filter="url(#sunTex)" opacity=".18"/>
+    <!-- mountains -->
+    <path d="M0 610 C60 585 95 560 140 572 C175 582 190 548 238 556 C290 565 320 600 380 598 C430 596 470 585 500 590 V700 H0Z" fill="url(#mtn1)" filter="url(#blur3)"/>
+    <path d="M0 640 C50 618 90 610 130 624 C170 638 210 612 260 622 C310 632 350 655 400 650 C440 646 470 636 500 640 V700 H0Z" fill="url(#mtn2)" filter="url(#blur3)" opacity=".8"/>
+    <g transform="translate(500 0) scale(.8) translate(-500 -40)">
+    <!-- branch -->
+    <g filter="url(#rough)" fill="none" stroke="#2b2622" stroke-linecap="round">
+      <path d="M512 330 C470 300 455 260 420 228 C392 202 360 186 318 176 C290 170 262 164 238 150" stroke-width="5"/>
+      <path d="M420 228 C430 196 446 170 470 150" stroke-width="3"/>
+      <path d="M362 190 C352 166 340 148 318 132" stroke-width="2.4"/>
+      <path d="M458 280 C430 290 410 300 392 322" stroke-width="2.6"/>
+      <path d="M290 168 C276 180 266 192 252 198" stroke-width="1.8"/>
+    </g>
+    <!-- leaves -->
+    <g fill="#3f3934" opacity=".85">
+      <path d="M238 150 q-24 -6 -40 6 q22 4 40 -6z"/>
+      <path d="M470 150 q8 -22 26 -28 q-6 22 -26 28z"/>
+      <path d="M318 132 q-6 -20 -24 -26 q4 22 24 26z"/>
+      <path d="M392 322 q-22 4 -32 20 q22 -2 32 -20z"/>
+      <path d="M252 198 q-18 8 -24 22 q18 -6 24 -22z"/>
+    </g>
+    <use href="#blossom" transform="translate(304 172) scale(1.5) rotate(10)"/>
+    <use href="#blossom" transform="translate(362 186) scale(1.25) rotate(-20)"/>
+    <use href="#blossom" transform="translate(422 222) scale(1.6) rotate(30)"/>
+    <use href="#blossom" transform="translate(452 168) scale(1.1)"/>
+    <use href="#blossom" transform="translate(408 312) scale(1.3) rotate(15)"/>
+    <use href="#blossom" transform="translate(478 296) scale(1.15) rotate(-12)"/>
+    <use href="#bud" transform="translate(332 140) rotate(-30)"/>
+    <use href="#bud" transform="translate(268 160) rotate(-60)"/>
+    <use href="#bud" transform="translate(484 138) rotate(20)"/>
+    <use href="#bud" transform="translate(442 264) rotate(40)"/>
+    </g>
+    <!-- falling petals -->
+    <g fill="#f2d6d0" stroke="#b8908a" stroke-width=".5">
+      <ellipse cx="270" cy="270" rx="3" ry="5" transform="rotate(40 270 270)"/>
+      <ellipse cx="420" cy="420" rx="2.6" ry="4.4" transform="rotate(-30 420 420)"/>
+      <ellipse cx="455" cy="520" rx="3" ry="5" transform="rotate(70 455 520)"/>
+    </g>
+    <!-- red cord -->
+    <path d="M64 0 V700" stroke="#a3201c" stroke-width="2.6"/>
+    <path d="M65.4 0 V700" stroke="#d24a3e" stroke-width=".7" opacity=".6"/>
+    <g fill="none" stroke="#a3201c" stroke-width="2.4" stroke-linecap="round">
+      <path d="M64 372 C40 350 22 340 26 356 C30 372 52 374 64 372"/>
+      <path d="M64 372 C78 344 98 336 98 352 C98 366 78 372 64 372"/>
+      <path d="M64 372 C56 398 40 420 28 436"/>
+      <path d="M64 372 C76 396 92 412 108 424"/>
+    </g>
+    <circle cx="64" cy="372" r="4.4" fill="#8f1b17"/>
+    <!-- hanko seal -->
+    <g transform="translate(446 652)">
+      <rect x="-15" y="-15" width="30" height="30" rx="3" fill="none" stroke="#a3201c" stroke-width="1.6" filter="url(#rough)"/>
+      <text y="5" text-anchor="middle" font-family="Amiri" font-size="15" fill="#a3201c">م ل</text>
+    </g>
+  </svg>
+  <div class="center ltr">
+    <div class="kicker">WEDDING INVITATION</div>
+    <div class="rule"></div>
+    <div class="name">MAHMOUD</div>
+    <div class="amp">&amp;</div>
+    <div class="name">LAMIAA</div>
+    <div class="ar">محمود و لمياء</div>
+    <div class="rule"></div>
+    <div class="date">SATURDAY<br>12 · DECEMBER · 2026</div>
+    <div class="rule"></div>
+    <div class="venue">LUCINDA HALL<small>Family Park</small></div>
+  </div>
+</div>
+<figcaption>SAKURA INK<span>الحبر الياباني — نسخة مطوّرة من التصميم الأصلي</span></figcaption>
+</figure>
+
+<!-- ================= 2. EMERALD ARABESQUE ================= -->
+<figure>
+<div class="card emerald" id="card-emerald">
+  <svg class="layer" viewBox="0 0 500 700" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f6e3a8"/><stop offset=".35" stop-color="#d4ad5b"/><stop offset=".6" stop-color="#a67c2e"/><stop offset=".85" stop-color="#f1d999"/><stop offset="1" stop-color="#b8913f"/>
+      </linearGradient>
+      <pattern id="stars" width="50" height="50" patternUnits="userSpaceOnUse">
+        <g fill="none" stroke="#d4ad5b" stroke-width=".6" opacity=".16">
+          <rect x="13" y="13" width="24" height="24"/>
+          <rect x="13" y="13" width="24" height="24" transform="rotate(45 25 25)"/>
+          <path d="M0 0L13 13M50 0L37 13M0 50L13 37M50 50L37 37"/>
+        </g>
+      </pattern>
+      <g id="corner">
+        <path d="M0 0 H70 M0 0 V70" stroke="url(#g1)" stroke-width="2"/>
+        <path d="M10 10 H54 M10 10 V54" stroke="url(#g1)" stroke-width=".8"/>
+        <g transform="translate(26 26)">
+          <rect x="-9" y="-9" width="18" height="18" fill="none" stroke="url(#g1)" stroke-width="1.2"/>
+          <rect x="-9" y="-9" width="18" height="18" fill="none" stroke="url(#g1)" stroke-width="1.2" transform="rotate(45)"/>
+          <circle r="2.5" fill="url(#g1)"/>
+        </g>
+      </g>
+    </defs>
+    <rect width="500" height="700" fill="url(#stars)"/>
+    <rect x="22" y="22" width="456" height="656" fill="none" stroke="url(#g1)" stroke-width="1.6"/>
+    <rect x="30" y="30" width="440" height="640" fill="none" stroke="url(#g1)" stroke-width=".6"/>
+    <use href="#corner" transform="translate(30 30)"/>
+    <use href="#corner" transform="translate(470 30) scale(-1 1)"/>
+    <use href="#corner" transform="translate(30 670) scale(1 -1)"/>
+    <use href="#corner" transform="translate(470 670) scale(-1 -1)"/>
+    <!-- top medallion -->
+    <g transform="translate(250 92)">
+      <circle r="34" fill="none" stroke="url(#g1)" stroke-width="1"/>
+      <circle r="28" fill="none" stroke="url(#g1)" stroke-width=".5"/>
+      <g fill="none" stroke="url(#g1)" stroke-width="1.3">
+        <rect x="-18" y="-18" width="36" height="36"/>
+        <rect x="-18" y="-18" width="36" height="36" transform="rotate(45)"/>
+        <rect x="-11" y="-11" width="22" height="22" transform="rotate(22.5)"/>
+        <rect x="-11" y="-11" width="22" height="22" transform="rotate(67.5)"/>
+      </g>
+      <circle r="3.5" fill="url(#g1)"/>
+    </g>
+  </svg>
+  <div class="center">
+    <div class="bism">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+    <div class="invite">بكل الحب والسعادة ندعوكم لمشاركتنا فرحة زفاف</div>
+    <div class="names-ar gold">محمود ♡ لمياء</div>
+    <div class="names-en">MAHMOUD &amp; LAMIAA</div>
+    <svg class="orn" viewBox="0 0 200 20" aria-hidden="true"><use href="#g1"/>
+      <path d="M0 10H78M122 10H200" stroke="#c9a456" stroke-width=".8"/>
+      <g transform="translate(100 10)" fill="none" stroke="#d9b867" stroke-width="1"><rect x="-7" y="-7" width="14" height="14" transform="rotate(45)"/><rect x="-4" y="-4" width="8" height="8"/></g>
+      <circle cx="84" cy="10" r="1.6" fill="#d9b867"/><circle cx="116" cy="10" r="1.6" fill="#d9b867"/>
+    </svg>
+    <div class="row">
+      <div class="side">السبت<br><span style="font-family:Cinzel;font-size:2.4cqw;letter-spacing:.3em">SATURDAY</span></div>
+      <div class="big gold">12</div>
+      <div class="side">ديسمبر ٢٠٢٦<br><span style="font-family:Cinzel;font-size:2.4cqw;letter-spacing:.3em">DEC 2026</span></div>
+    </div>
+    <div class="venue">قاعة لوسيندا — فاميلي بارك</div>
+    <div class="venue-en ltr">LUCINDA HALL · FAMILY PARK</div>
+  </div>
+</div>
+<figcaption>EMERALD ARABESQUE<span>زمرّدي وذهبي بزخارف إسلامية</span></figcaption>
+</figure>
+
+<!-- ================= 3. MIDNIGHT ARCH ================= -->
+<figure>
+<div class="card midnight" id="card-midnight">
+  <svg class="layer" viewBox="0 0 500 700" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3e2b0"/><stop offset=".5" stop-color="#c9a764"/><stop offset="1" stop-color="#f0dca6"/></linearGradient>
+      <radialGradient id="moonGlow"><stop offset="0" stop-color="#f6e6b8" stop-opacity=".35"/><stop offset="1" stop-color="#f6e6b8" stop-opacity="0"/></radialGradient>
+      <radialGradient id="moon" cx=".4" cy=".35"><stop offset="0" stop-color="#fff6dc"/><stop offset=".7" stop-color="#ead39a"/><stop offset="1" stop-color="#cfae66"/></radialGradient>
+      <mask id="crescent"><rect width="500" height="700" fill="#fff"/><circle cx="272" cy="168" r="44" fill="#000"/></mask>
+      <g id="star4"><path d="M0 -6 L1.2 -1.2 L6 0 L1.2 1.2 L0 6 L-1.2 1.2 L-6 0 L-1.2 -1.2Z" fill="#f3e2b0"/></g>
+    </defs>
+    <!-- tiny stars -->
+    <g fill="#e9dcb8">
+      <circle cx="60" cy="80" r=".9" opacity=".7"/><circle cx="110" cy="40" r="1.2" opacity=".5"/><circle cx="420" cy="60" r="1" opacity=".8"/>
+      <circle cx="450" cy="150" r=".8" opacity=".6"/><circle cx="40" cy="220" r="1" opacity=".5"/><circle cx="470" cy="300" r="1.1" opacity=".5"/>
+      <circle cx="30" cy="420" r=".8" opacity=".6"/><circle cx="475" cy="520" r=".9" opacity=".5"/><circle cx="160" cy="110" r=".7" opacity=".7"/>
+      <circle cx="350" cy="30" r=".9" opacity=".6"/><circle cx="380" cy="110" r=".7" opacity=".7"/><circle cx="90" cy="300" r=".7" opacity=".5"/>
+    </g>
+    <use href="#star4" transform="translate(140 70) scale(1.2)"/>
+    <use href="#star4" transform="translate(395 92) scale(.8)"/>
+    <use href="#star4" transform="translate(70 170) scale(.7)"/>
+    <use href="#star4" transform="translate(440 220) scale(1)"/>
+    <!-- arch frame -->
+    <path d="M70 660 V250 C70 140 160 72 250 52 C340 72 430 140 430 250 V660 Z" fill="rgba(255,255,255,.025)" stroke="url(#g3)" stroke-width="1.6"/>
+    <path d="M82 648 V254 C82 152 166 88 250 68 C334 88 418 152 418 254 V648 Z" fill="none" stroke="url(#g3)" stroke-width=".6"/>
+    <!-- moon -->
+    <circle cx="250" cy="180" r="90" fill="url(#moonGlow)"/>
+    <circle cx="250" cy="180" r="50" fill="url(#moon)" mask="url(#crescent)"/>
+    <use href="#star4" transform="translate(286 150) scale(1.3)"/>
+    <!-- hanging lanterns -->
+    <g stroke="url(#g3)" fill="none" stroke-width=".8">
+      <path d="M150 104 V150"/><path d="M350 104 V150"/>
+    </g>
+    <g fill="url(#g3)">
+      <path d="M150 150 l-7 8 v12 l7 7 l7 -7 v-12z" opacity=".95"/>
+      <path d="M350 150 l-7 8 v12 l7 7 l7 -7 v-12z" opacity=".95"/>
+    </g>
+    <g fill="#ffe9a8" opacity=".35"><circle cx="150" cy="164" r="12"/><circle cx="350" cy="164" r="12"/></g>
+    <!-- base ornament -->
+    <g transform="translate(250 660)"><path d="M-60 0H60" stroke="url(#g3)" stroke-width="1.6"/><rect x="-5" y="-5" width="10" height="10" transform="rotate(45)" fill="url(#g3)"/></g>
+  </svg>
+  <div class="center">
+    <div class="kicker ltr" style="margin-bottom:1.5cqw">TOGETHER WITH THEIR FAMILIES</div>
+    <div class="name ltr">Mahmoud</div>
+    <div class="and">&amp;</div>
+    <div class="name ltr">Lamiaa</div>
+    <div class="ar">محمود و لمياء</div>
+    <div class="line"></div>
+    <div class="date ltr"><div class="m" style="text-align:right">SATURDAY<br>السبت</div><div class="d">12</div><div class="m">DECEMBER<br>2026</div></div>
+    <div class="line"></div>
+    <div class="venue ltr">LUCINDA HALL<small>FAMILY PARK · قاعة لوسيندا</small></div>
+  </div>
+</div>
+<figcaption>MIDNIGHT ARCH<span>ليلة كحلي بقمر ذهبي وقوس شرقي</span></figcaption>
+</figure>
+
+<!-- ================= 4. TERRACOTTA OLIVE ================= -->
+<figure>
+<div class="card terra" id="card-terra">
+  <svg class="layer" viewBox="0 0 500 700" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7"/>
+        <feColorMatrix values="0 0 0 0 .4 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .08 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+      <linearGradient id="archG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c0653f"/><stop offset="1" stop-color="#9c4a2b"/></linearGradient>
+      <g id="leaf"><path d="M0 0 C6 -8 18 -10 26 -6 C18 -2 8 2 0 0Z" fill="#6f7a4a"/><path d="M0 0 C8 -4 16 -6 26 -6" stroke="#4e5833" stroke-width=".5" fill="none"/></g>
+      <g id="leafL"><path d="M0 0 C6 -8 18 -10 26 -6 C18 -2 8 2 0 0Z" fill="#8a9460"/></g>
+    </defs>
+    <rect width="500" height="700" fill="#efe3d3"/>
+    <rect width="500" height="700" filter="url(#grain)"/>
+    <!-- sun disc behind arch -->
+    <circle cx="250" cy="150" r="150" fill="#e6c9a8" opacity=".55"/>
+    <!-- arch -->
+    <path d="M70 560 V250 A180 180 0 0 1 430 250 V560 Z" fill="url(#archG)"/>
+    <rect x="70" y="250" width="360" height="310" fill="url(#archG)" filter="url(#grain)" opacity=".6"/>
+    <path d="M86 548 V252 A164 164 0 0 1 414 252 V548 Z" fill="none" stroke="#f2d3ad" stroke-width=".8" opacity=".6"/>
+    <!-- olive branch left -->
+    <g>
+      <path d="M40 640 C80 600 90 520 70 440 C60 400 62 360 80 320" stroke="#4e5833" stroke-width="2" fill="none"/>
+      <use href="#leaf" transform="translate(70 600) rotate(-70)"/>
+      <use href="#leafL" transform="translate(76 580) rotate(-150)"/>
+      <use href="#leaf" transform="translate(80 540) rotate(-60)"/>
+      <use href="#leafL" transform="translate(78 520) rotate(-160)"/>
+      <use href="#leaf" transform="translate(74 480) rotate(-80)"/>
+      <use href="#leafL" transform="translate(68 452) rotate(-170)"/>
+      <use href="#leaf" transform="translate(64 410) rotate(-75)"/>
+      <use href="#leafL" transform="translate(66 380) rotate(-175)"/>
+      <use href="#leaf" transform="translate(72 350) rotate(-70)"/>
+      <use href="#leafL" transform="translate(80 320) rotate(-120)"/>
+      <circle cx="88" cy="566" r="4" fill="#3f4528"/><circle cx="58" cy="430" r="3.6" fill="#3f4528"/>
+    </g>
+    <!-- olive branch right -->
+    <g transform="translate(500 0) scale(-1 1)">
+      <path d="M40 640 C80 600 90 520 70 440 C60 400 62 360 80 320" stroke="#4e5833" stroke-width="2" fill="none"/>
+      <use href="#leaf" transform="translate(70 600) rotate(-70)"/>
+      <use href="#leafL" transform="translate(76 580) rotate(-150)"/>
+      <use href="#leaf" transform="translate(80 540) rotate(-60)"/>
+      <use href="#leafL" transform="translate(78 520) rotate(-160)"/>
+      <use href="#leaf" transform="translate(74 480) rotate(-80)"/>
+      <use href="#leafL" transform="translate(68 452) rotate(-170)"/>
+      <use href="#leaf" transform="translate(64 410) rotate(-75)"/>
+      <use href="#leafL" transform="translate(66 380) rotate(-175)"/>
+      <circle cx="88" cy="566" r="4" fill="#3f4528"/>
+    </g>
+    <!-- top small ornament -->
+    <g transform="translate(250 112)" fill="#f6ead9"><circle r="2.5"/><circle cx="-12" r="1.5"/><circle cx="12" r="1.5"/></g>
+  </svg>
+  <div class="center">
+    <div class="kicker ltr">please join us to celebrate</div>
+    <div class="name ltr">MAHMOUD</div>
+    <div class="amp ltr">and</div>
+    <div class="name ltr">LAMIAA</div>
+    <div class="ar">محمود و لمياء</div>
+    <div class="sep"></div>
+    <div class="date ltr">SATURDAY<br>12 DECEMBER 2026</div>
+    <div class="venue ltr">LUCINDA HALL<small>Family Park · قاعة لوسيندا</small></div>
+  </div>
+</div>
+<figcaption>TERRACOTTA OLIVE<span>قوس تيراكوتا وأغصان زيتون — طابع عصري دافئ</span></figcaption>
+</figure>
+
+</main>
+</body>
+</html>
